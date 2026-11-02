@@ -85,7 +85,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter'
 .check-option{display:flex;align-items:flex-start;gap:0;padding:11px 16px;border-bottom:1px solid var(--sep2);cursor:pointer;}
 .check-option:last-child{border-bottom:none;}
 .check-option.mid{border-bottom:1px solid var(--sep2);}
-.check-option.mid .check-text::before{content:'◆ ';font-size:9px;color:var(--accent);opacity:0.8;vertical-align:middle;margin-right:2px;}
+.check-option.mid .check-text::before{content:'';}
 .check-box{width:24px;height:24px;border-radius:50%;border:2px solid rgba(var(--cat-rgb,160,160,165),.55);flex-shrink:0;margin-top:1px;margin-right:12px;display:flex;align-items:center;justify-content:center;transition:all .15s;}
 .check-option.selected{background:rgba(var(--cat-rgb,200,169,126),.1);border-radius:8px;}
 .check-option.selected .check-box{background:var(--cat,var(--accent));border-color:var(--cat,var(--accent));}
@@ -231,23 +231,22 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter'
       <div class="divider"></div>
       <div class="cgl">Menstrual cramping</div>
       <div>
-        <label class="check-option" onclick="sel(this,'cramping',0)"><div class="check-box"></div><div class="check-text">None</div></label>
-        <label class="check-option" onclick="sel(this,'cramping',1)"><div class="check-box"></div><div class="check-text">Mild<small>Present, manageable without medication</small></div></label>
-        <label class="check-option" onclick="sel(this,'cramping',2)"><div class="check-box"></div><div class="check-text">Moderate<small>Required pain relief or significantly affected comfort</small></div></label>
-        <label class="check-option" onclick="sel(this,'cramping',3)"><div class="check-box"></div><div class="check-text">Severe<small>Debilitating, limited normal activity</small></div></label>
+        <label class="check-option" onclick="sel(this,'cramping',1)"><div class="check-box"></div><div class="check-text">Not at all<small>No cramping</small></div></label>
+        <label class="check-option" onclick="sel(this,'cramping',2)"><div class="check-box"></div><div class="check-text">Mild<small>Present; manageable without medication</small></div></label>
+        <label class="check-option" onclick="sel(this,'cramping',3)"><div class="check-box"></div><div class="check-text">Moderate<small>Required pain relief or significantly affected comfort</small></div></label>
+        <label class="check-option" onclick="sel(this,'cramping',4)"><div class="check-box"></div><div class="check-text">Severe<small>Debilitating; limited normal activity</small></div></label>
       </div>
     </div>
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#5e5ce6;">💤 Sleep</div>
   <div class="card" style="--cat:#5e5ce6;--cat-rgb:94,92,230;">
     <div class="cgl">Sleep quality last night</div>
-    <label class="check-option" onclick="sel(this,'sleepQ',6)"><div class="check-box"></div><div class="check-text">Could have kept sleeping for hours<small>Deeply rested, woke reluctantly, felt no readiness to rise</small></div></label>
-    <label class="check-option" onclick="sel(this,'sleepQ',5)"><div class="check-box"></div><div class="check-text">Restored<small>Woke feeling genuinely rested and ready</small></div></label>
-    <label class="check-option mid" onclick="sel(this,'sleepQ',4)"><div class="check-box"></div><div class="check-text">Adequate<small>Slept through, woke functional and able to get on with the day</small></div></label>
-    <label class="check-option" onclick="sel(this,'sleepQ',3)"><div class="check-box"></div><div class="check-text">Fragmented<small>Some waking or long time to fall asleep, functional but not restored</small></div></label>
-    <label class="check-option" onclick="sel(this,'sleepQ',2)"><div class="check-box"></div><div class="check-text">Poor<small>Woke multiple times, significant difficulty returning to sleep</small></div></label>
-    <label class="check-option" onclick="sel(this,'sleepQ',1)"><div class="check-box"></div><div class="check-text">Barely slept<small>Less than a few hours, or in and out all night without rest</small></div></label>
-    <label class="check-option" onclick="sel(this,'sleepQ',0)"><div class="check-box"></div><div class="check-text">Unrested despite sleeping<small>Hours logged but no recovery — felt worse than not sleeping</small></div></label>
+    <label class="check-option" onclick="sel(this,'sleepQ',1)"><div class="check-box"></div><div class="check-text">Restored<small>Woke feeling genuinely rested and ready</small></div></label>
+    <label class="check-option" onclick="sel(this,'sleepQ',2)"><div class="check-box"></div><div class="check-text">Adequate<small>Slept through; woke functional if not fully rested</small></div></label>
+    <label class="check-option mid" onclick="sel(this,'sleepQ',3)"><div class="check-box"></div><div class="check-text">Some waking or delay<small>Functional but not restored; fell back asleep eventually</small></div></label>
+    <label class="check-option" onclick="sel(this,'sleepQ',4)"><div class="check-box"></div><div class="check-text">Woke multiple times<small>Significant difficulty returning to sleep; rest was fragmented</small></div></label>
+    <label class="check-option" onclick="sel(this,'sleepQ',5)"><div class="check-box"></div><div class="check-text">Barely slept<small>Less than a few hours; or in and out all night</small></div></label>
+    <label class="check-option" onclick="sel(this,'sleepQ',6)"><div class="check-box"></div><div class="check-text">Hours in bed, no recovery<small>Felt worse than not sleeping; completely unrestorative</small></div></label>
     <div class="divider"></div>
     <div class="cgl">Approximate hours slept</div>
     <div class="toggle-row">
@@ -267,30 +266,37 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter'
       <button type="button" class="toggle-chip" onclick="chip(this,'sleepLatency','&gt;40')">Over 40 min</button>
       <button type="button" class="toggle-chip" onclick="chip(this,'sleepLatency','couldnt')">Couldn't sleep</button>
     </div>
+    <label class="check-option" onclick="ms(this,'sleepFlags','early-waking')" style="margin-top:10px;"><div class="check-box"></div><div class="check-text">Woke between 2–4am<small>Couldn't return to sleep easily</small></div></label>
     <div class="divider"></div>
-    <div class="cgl">Early morning waking<span class="cgl-sub">Distinct from general poor sleep — anxiety-driven waking 2–4am</span></div>
-    <label class="check-option" onclick="ms(this,'sleepFlags','early-waking')"><div class="check-box"></div><div class="check-text">Woke between 2–4am — couldn't return to sleep easily<small>Often anxiety or racing thoughts, not needing the bathroom</small></div></label>
+    <div class="cgl">Nap today</div>
+    <div style="padding:10px 16px 12px;display:flex;align-items:center;gap:12px;">
+      <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:15px;color:#fff;font-weight:500;">
+        <input type="checkbox" id="napCheck" onchange="napToggle(this)" style="width:18px;height:18px;accent-color:#5e5ce6;cursor:pointer;">
+        Napped
+      </label>
+      <input type="text" id="napDurInput" placeholder="Duration — e.g. 20 min" maxlength="30"
+        style="display:none;flex:1;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:7px 12px;font-size:14px;color:#fff;font-family:inherit;"
+        oninput="FD.napDur=this.value.trim();save()">
+    </div>
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#30d158;">🔋 Physical drive</div>
   <div class="card" style="--cat:#30d158;--cat-rgb:48,209,88;">
-    <label class="check-option" onclick="sel(this,'energy',6)"><div class="check-box"></div><div class="check-text">High drive<small>Body felt ready and capable, wanted to move, no resistance</small></div></label>
-    <label class="check-option" onclick="sel(this,'energy',5)"><div class="check-box"></div><div class="check-text">Good<small>Solid energy through the day, no notable dips</small></div></label>
-    <label class="check-option" onclick="sel(this,'energy',4)"><div class="check-box"></div><div class="check-text">Slightly above<small>Marginally more energy than usual, nothing notable</small></div></label>
-    <label class="check-option mid" onclick="sel(this,'energy',3)"><div class="check-box"></div><div class="check-text">Normal<small>Adequate energy, day proceeded without resistance</small></div></label>
-    <label class="check-option" onclick="sel(this,'energy',2)"><div class="check-box"></div><div class="check-text">Mild drag<small>Slight tiredness, still completed everything expected</small></div></label>
-    <label class="check-option" onclick="sel(this,'energy',1)"><div class="check-box"></div><div class="check-text">Fatigued<small>Required deliberate effort for ordinary tasks</small></div></label>
-    <label class="check-option" onclick="sel(this,'energy',0)"><div class="check-box"></div><div class="check-text">Exhausted or depleted<small>Wanted to cancel everything; or couldn't sustain activity at all</small></div></label>
+    <label class="check-option" onclick="sel(this,'energy',1)"><div class="check-box"></div><div class="check-text">Ready and capable<small>Body felt ready and capable; no resistance</small></div></label>
+    <label class="check-option" onclick="sel(this,'energy',2)"><div class="check-box"></div><div class="check-text">Slight tiredness only<small>Still completed everything without effort</small></div></label>
+    <label class="check-option mid" onclick="sel(this,'energy',3)"><div class="check-box"></div><div class="check-text">Noticeably tired<small>Tasks required slightly more effort than usual</small></div></label>
+    <label class="check-option" onclick="sel(this,'energy',4)"><div class="check-box"></div><div class="check-text">Required deliberate effort<small>Ordinary tasks took real effort; dips in the day</small></div></label>
+    <label class="check-option" onclick="sel(this,'energy',5)"><div class="check-box"></div><div class="check-text">Pushed through; it cost<small>Very low energy; completing things had a real toll</small></div></label>
+    <label class="check-option" onclick="sel(this,'energy',6)"><div class="check-box"></div><div class="check-text">Couldn't sustain activity<small>Wanted to cancel everything; functioning was a struggle</small></div></label>
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#ef3d57;">🍎 Hunger and appetite</div>
   <div class="card" style="--cat:#ef3d57;--cat-rgb:239,61,87;">
     <div>
-      <label class="check-option" onclick="sel(this,'appetite',0)"><div class="check-box"></div><div class="check-text">Absent<small>No hunger signal whatsoever, food unappealing</small></div></label>
-      <label class="check-option" onclick="sel(this,'appetite',1)"><div class="check-box"></div><div class="check-text">Suppressed<small>Had to eat by schedule, no body drive to eat</small></div></label>
-      <label class="check-option" onclick="sel(this,'appetite',2)"><div class="check-box"></div><div class="check-text">Slightly suppressed<small>Mildly less hungry than usual, easily managed</small></div></label>
-      <label class="check-option mid" onclick="sel(this,'appetite',3);document.getElementById('appetite-craving').classList.remove('open')"><div class="check-box"></div><div class="check-text">Unremarkable<small>Hunger arose and resolved normally, nothing to note</small></div></label>
-      <label class="check-option" onclick="sel(this,'appetite',4)"><div class="check-box"></div><div class="check-text">Slightly elevated<small>Mildly more hungry than usual, easily managed</small></div></label>
-      <label class="check-option" onclick="sel(this,'appetite',5);document.getElementById('appetite-craving').classList.add('open')"><div class="check-box"></div><div class="check-text">Elevated<small>Strong pull toward food, wanted more than usual</small></div></label>
-      <label class="check-option" onclick="sel(this,'appetite',6);document.getElementById('appetite-craving').classList.add('open')"><div class="check-box"></div><div class="check-text">Insatiable<small>Ate and still wanted more, hunger didn't resolve</small></div></label>
+      <label class="check-option" onclick="sel(this,'appetite',1);document.getElementById('appetite-craving').classList.remove('open')"><div class="check-box"></div><div class="check-text">No hunger signal<small>No awareness of appetite; food wasn't a factor at all</small></div></label>
+      <label class="check-option" onclick="sel(this,'appetite',2);document.getElementById('appetite-craving').classList.remove('open')"><div class="check-box"></div><div class="check-text">Faint or quiet<small>Hunger barely registered; easy to ignore or overlook</small></div></label>
+      <label class="check-option mid" onclick="sel(this,'appetite',3);document.getElementById('appetite-craving').classList.remove('open')"><div class="check-box"></div><div class="check-text">Present, unremarkable<small>Hunger came and went normally; nothing pulled my attention</small></div></label>
+      <label class="check-option" onclick="sel(this,'appetite',4);document.getElementById('appetite-craving').classList.add('open')"><div class="check-box"></div><div class="check-text">Clearly noticeable<small>Appetite was in my awareness; starting to affect food decisions</small></div></label>
+      <label class="check-option" onclick="sel(this,'appetite',5);document.getElementById('appetite-craving').classList.add('open')"><div class="check-box"></div><div class="check-text">Strong and persistent<small>Hard to set aside; kept returning; required active effort to navigate</small></div></label>
+      <label class="check-option" onclick="sel(this,'appetite',6);document.getElementById('appetite-craving').classList.add('open')"><div class="check-box"></div><div class="check-text">Consuming or completely absent<small>Couldn't satisfy hunger regardless of intake — or no signal at all</small></div></label>
     </div>
     <div class="collapsible" id="appetite-craving">
       <div class="divider"></div>
@@ -299,27 +305,27 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter'
     <div class="divider"></div>
     <div class="cgl">Eating behaviour today</div>
     <div>
-      <label class="check-option" onclick="sel(this,'eatingBeh',0)"><div class="check-box"></div><div class="check-text">Hunger only<small>Ate in response to hunger signals, nothing to note</small></div></label>
-      <label class="check-option" onclick="sel(this,'eatingBeh',1)"><div class="check-box"></div><div class="check-text">Mindful excess<small>Ate beyond hunger as a conscious choice, remained in control throughout</small></div></label>
-      <label class="check-option" onclick="sel(this,'eatingBeh',2)"><div class="check-box"></div><div class="check-text">Emotional eating<small>Used food to manage an emotional state, aware of it while doing it</small></div></label>
-      <label class="check-option" onclick="sel(this,'eatingBeh',3)"><div class="check-box"></div><div class="check-text">Loss of control<small>Urge to eat beyond satiation, partially or fully acted on</small></div></label>
+      <label class="check-option" onclick="sel(this,'eatingBeh',1)"><div class="check-box"></div><div class="check-text">Ate to hunger only<small>Ate when hungry, stopped when full; nothing notable</small></div></label>
+      <label class="check-option" onclick="sel(this,'eatingBeh',2)"><div class="check-box"></div><div class="check-text">Ate past fullness — aware<small>Chose to eat beyond satiation; felt in control of the choice</small></div></label>
+      <label class="check-option" onclick="sel(this,'eatingBeh',3)"><div class="check-box"></div><div class="check-text">Ate to manage emotions<small>Used food to cope with a feeling; recognised it while doing it</small></div></label>
+      <label class="check-option" onclick="sel(this,'eatingBeh',4)"><div class="check-box"></div><div class="check-text">Lost control of eating<small>Urge to eat past fullness was hard to resist; partially or fully acted on</small></div></label>
     </div>
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#fe8814;">💥 Food noise</div>
   <div class="card" style="--cat:#fe8814;--cat-rgb:254,136,20;">
-    <label class="check-option" onclick="sel(this,'foodNoise',0)"><div class="check-box"></div><div class="check-text">None<small>Food didn't cross my mind between meals</small></div></label>
-    <label class="check-option" onclick="sel(this,'foodNoise',1)"><div class="check-box"></div><div class="check-text">Minimal<small>One or two fleeting thoughts, no effort to dismiss</small></div></label>
-    <label class="check-option" onclick="sel(this,'foodNoise',2)"><div class="check-box"></div><div class="check-text">Present<small>Food surfaced periodically between meals, easily dismissed</small></div></label>
-    <label class="check-option" onclick="sel(this,'foodNoise',3)"><div class="check-box"></div><div class="check-text">Persistent<small>Food thoughts returned repeatedly, mild but ongoing distraction</small></div></label>
-    <label class="check-option" onclick="sel(this,'foodNoise',4)"><div class="check-box"></div><div class="check-text">Intrusive<small>Food preoccupation interfered with concentration on tasks</small></div></label>
-    <label class="check-option" onclick="sel(this,'foodNoise',5)"><div class="check-box"></div><div class="check-text">Consuming<small>Couldn't sustain focus on other things, food dominated thinking</small></div></label>
+    <label class="check-option" onclick="sel(this,'foodNoise',1)"><div class="check-box"></div><div class="check-text">No food thoughts<small>Food didn't cross my mind between meals</small></div></label>
+    <label class="check-option" onclick="sel(this,'foodNoise',2)"><div class="check-box"></div><div class="check-text">Occasional fleeting thoughts<small>One or two brief moments; passed without effort</small></div></label>
+    <label class="check-option mid" onclick="sel(this,'foodNoise',3)"><div class="check-box"></div><div class="check-text">Periodic food thoughts<small>Surfaced between meals a few times; easily let go</small></div></label>
+    <label class="check-option" onclick="sel(this,'foodNoise',4)"><div class="check-box"></div><div class="check-text">Persistent background noise<small>Food thoughts kept returning; mild but ongoing distraction</small></div></label>
+    <label class="check-option" onclick="sel(this,'foodNoise',5)"><div class="check-box"></div><div class="check-text">Intrusive — broke concentration<small>Food preoccupation interfered with tasks; hard to redirect</small></div></label>
+    <label class="check-option" onclick="sel(this,'foodNoise',6)"><div class="check-box"></div><div class="check-text">Consuming — dominated thinking<small>Couldn't sustain focus on anything else; food was the primary thought</small></div></label>
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#64d2ff;">💨 Bloating</div>
   <div class="card" style="--cat:#64d2ff;--cat-rgb:100,210,255;">
-    <label class="check-option" onclick="sel(this,'bloating',0)"><div class="check-box"></div><div class="check-text">None<small>Abdomen flat and comfortable, no awareness of it</small></div></label>
-    <label class="check-option" onclick="sel(this,'bloating',1)"><div class="check-box"></div><div class="check-text">Mild fullness<small>Noticeable after eating, not uncomfortable</small></div></label>
-    <label class="check-option" onclick="sel(this,'bloating',2)"><div class="check-box"></div><div class="check-text">Uncomfortable<small>Clothes feel tight, aware of it throughout the day</small></div></label>
-    <label class="check-option" onclick="sel(this,'bloating',3)"><div class="check-box"></div><div class="check-text">Painful<small>Distended, physically distressing, affected movement or posture</small></div></label>
+    <label class="check-option" onclick="sel(this,'bloating',1)"><div class="check-box"></div><div class="check-text">No bloating<small>Abdomen flat and comfortable; no awareness</small></div></label>
+    <label class="check-option" onclick="sel(this,'bloating',2)"><div class="check-box"></div><div class="check-text">Noticeable after eating<small>Present but not uncomfortable; resolved or subsided</small></div></label>
+    <label class="check-option" onclick="sel(this,'bloating',3)"><div class="check-box"></div><div class="check-text">Clothes feel tight<small>Persistent throughout the day; uncomfortable but not distressing</small></div></label>
+    <label class="check-option" onclick="sel(this,'bloating',4)"><div class="check-box"></div><div class="check-text">Visibly distended<small>Physically distressing; affected how I moved or sat</small></div></label>
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#c99269;">💩 Bowel</div>
   <div class="card" style="--cat:#c99269;--cat-rgb:201,146,105;">
@@ -370,10 +376,10 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter'
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#f84c4b;">🫯 Physical pain</div>
   <div class="card" style="--cat:#f84c4b;--cat-rgb:248,76,75;">
-    <label class="check-option" onclick="sel(this,'pain',0);showPainLoc(false)"><div class="check-box"></div><div class="check-text">None<small>Physically comfortable, no awareness of pain</small></div></label>
-    <label class="check-option" onclick="sel(this,'pain',1);showPainLoc(true)"><div class="check-box"></div><div class="check-text">Mild<small>Present and noticed, didn't interfere with function</small></div></label>
-    <label class="check-option" onclick="sel(this,'pain',2);showPainLoc(true)"><div class="check-box"></div><div class="check-text">Moderate<small>Interfered with comfort or normal movement</small></div></label>
-    <label class="check-option" onclick="sel(this,'pain',3);showPainLoc(true)"><div class="check-box"></div><div class="check-text">Severe<small>Couldn't ignore, altered behaviour or movement</small></div></label>
+    <label class="check-option" onclick="sel(this,'pain',1);showPainLoc(false)"><div class="check-box"></div><div class="check-text">No pain<small>Physically comfortable; no awareness of pain</small></div></label>
+    <label class="check-option" onclick="sel(this,'pain',2);showPainLoc(true)"><div class="check-box"></div><div class="check-text">Present and noticed<small>There, but didn't interfere with function</small></div></label>
+    <label class="check-option" onclick="sel(this,'pain',3);showPainLoc(true)"><div class="check-box"></div><div class="check-text">Interfered with comfort<small>Affected normal movement or how I held myself</small></div></label>
+    <label class="check-option" onclick="sel(this,'pain',4);showPainLoc(true)"><div class="check-box"></div><div class="check-text">Couldn't ignore<small>Altered behaviour, movement, or required management</small></div></label>
     <div class="collapsible" id="pain-loc-wrap">
       <div class="divider"></div>
       <div class="cgl">Pain location <span style="font-size:11px;color:var(--text3);font-weight:400;">— tap all that apply</span></div>
@@ -387,12 +393,19 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter'
       <div style="margin-top:8px;"><input type="text" class="text-input-sm" id="pain-other-note" placeholder="Describe if Other"></div>
     </div>
   </div>
+  <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#ff9f0a;">🤢 Nausea</div>
+  <div class="card" style="--cat:#ff9f0a;--cat-rgb:255,159,10;">
+    <label class="check-option" onclick="sel(this,'nausea',1)"><div class="check-box"></div><div class="check-text">No nausea<small>No awareness; completely absent</small></div></label>
+    <label class="check-option" onclick="sel(this,'nausea',2)"><div class="check-box"></div><div class="check-text">Present and noticeable<small>There, but passed on its own; didn't affect eating or activity</small></div></label>
+    <label class="check-option mid" onclick="sel(this,'nausea',3)"><div class="check-box"></div><div class="check-text">Persistent feeling<small>Affected eating or made it hard to ignore; no vomiting</small></div></label>
+    <label class="check-option" onclick="sel(this,'nausea',4)"><div class="check-box"></div><div class="check-text">Vomited<small>Or so severe it stopped normal activity</small></div></label>
+  </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#f7f74d;">🔨 Headache</div>
   <div class="card" style="--cat:#f7f74d;--cat-rgb:247,247,77;">
-    <label class="check-option" onclick="sel(this,'headache',0);showHeadType(false)"><div class="check-box"></div><div class="check-text">None</div></label>
-    <label class="check-option" onclick="sel(this,'headache',1);showHeadType(true)"><div class="check-box"></div><div class="check-text">Mild<small>Present and noticed, didn't need to change anything</small></div></label>
-    <label class="check-option" onclick="sel(this,'headache',2);showHeadType(true)"><div class="check-box"></div><div class="check-text">Moderate<small>Affected concentration or activity level</small></div></label>
-    <label class="check-option" onclick="sel(this,'headache',3);showHeadType(true)"><div class="check-box"></div><div class="check-text">Severe<small>Required medication or rest, couldn't push through</small></div></label>
+    <label class="check-option" onclick="sel(this,'headache',1);showHeadType(false)"><div class="check-box"></div><div class="check-text">No headache<small>Completely absent; no awareness</small></div></label>
+    <label class="check-option" onclick="sel(this,'headache',2);showHeadType(true)"><div class="check-box"></div><div class="check-text">Present and noticed<small>There, but didn't need to change anything</small></div></label>
+    <label class="check-option" onclick="sel(this,'headache',3);showHeadType(true)"><div class="check-box"></div><div class="check-text">Affected concentration<small>Had to slow down or adjust activity</small></div></label>
+    <label class="check-option" onclick="sel(this,'headache',4);showHeadType(true)"><div class="check-box"></div><div class="check-text">Required medication or rest<small>Couldn't push through without intervention</small></div></label>
     <div class="collapsible" id="head-type-wrap">
       <div class="divider"></div>
       <div class="cgl">Headache type</div>
@@ -406,10 +419,10 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter'
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#f26c60;">🌸 Skin</div>
   <div class="card" style="--cat:#f26c60;--cat-rgb:242,108,96;">
-    <label class="check-option" onclick="sel(this,'acne',0);showAcneLoc(false)"><div class="check-box"></div><div class="check-text">Clear<small>No active breakouts</small></div></label>
-    <label class="check-option" onclick="sel(this,'acne',1);showAcneLoc(true)"><div class="check-box"></div><div class="check-text">1–2 spots, not inflamed<small>Present but flat, not tender</small></div></label>
-    <label class="check-option" onclick="sel(this,'acne',2);showAcneLoc(true)"><div class="check-box"></div><div class="check-text">Several spots, some inflamed<small>More than 2, at least one raised or red</small></div></label>
-    <label class="check-option" onclick="sel(this,'acne',3);showAcneLoc(true)"><div class="check-box"></div><div class="check-text">Multiple inflamed or cystic<small>Several active, some deep or painful</small></div></label>
+    <label class="check-option" onclick="sel(this,'acne',1);showAcneLoc(false)"><div class="check-box"></div><div class="check-text">Clear<small>No active breakouts</small></div></label>
+    <label class="check-option" onclick="sel(this,'acne',2);showAcneLoc(true)"><div class="check-box"></div><div class="check-text">1–2 spots<small>Not inflamed; present but flat and not tender</small></div></label>
+    <label class="check-option" onclick="sel(this,'acne',3);showAcneLoc(true)"><div class="check-box"></div><div class="check-text">Several spots<small>Some inflamed; at least one raised or red</small></div></label>
+    <label class="check-option" onclick="sel(this,'acne',4);showAcneLoc(true)"><div class="check-box"></div><div class="check-text">Multiple inflamed or cystic<small>Several active; some deep or painful</small></div></label>
     <div class="collapsible" id="acne-loc-wrap">
       <div class="divider"></div>
       <div class="cgl">Acne location <span style="font-size:11px;color:var(--text3);font-weight:400;">— tap all that apply</span></div>
@@ -422,21 +435,27 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter'
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#fc288e;">💗 Libido</div>
   <div class="card" style="--cat:#fc288e;--cat-rgb:252,40,142;">
-    <label class="check-option" onclick="sel(this,'libido',0)"><div class="check-box"></div><div class="check-text">Absent<small>No signal whatsoever, not on my radar at all</small></div></label>
-    <label class="check-option" onclick="sel(this,'libido',1)"><div class="check-box"></div><div class="check-text">Low<small>Present but weak, easily ignored, not interfering</small></div></label>
-    <label class="check-option mid" onclick="sel(this,'libido',2)"><div class="check-box"></div><div class="check-text">Present<small>Registered, neither strong nor suppressed</small></div></label>
-    <label class="check-option" onclick="sel(this,'libido',3)"><div class="check-box"></div><div class="check-text">Strong<small>Clearly present, difficult to ignore</small></div></label>
-    <label class="check-option" onclick="sel(this,'libido',4)"><div class="check-box"></div><div class="check-text">Dominant<small>Significantly elevated, actively present throughout the day</small></div></label>
+    <label class="check-option" onclick="sel(this,'libido',1)"><div class="check-box"></div><div class="check-text">Completely absent<small>No awareness; no pull, no signal whatsoever</small></div></label>
+    <label class="check-option" onclick="sel(this,'libido',2)"><div class="check-box"></div><div class="check-text">Faint or suppressed<small>Barely registered; noticeably less than usual</small></div></label>
+    <label class="check-option mid" onclick="sel(this,'libido',3)"><div class="check-box"></div><div class="check-text">Quiet but present<small>There in the background; not demanding attention</small></div></label>
+    <label class="check-option" onclick="sel(this,'libido',4)"><div class="check-box"></div><div class="check-text">Clearly present<small>Noticeable; in my awareness but manageable</small></div></label>
+    <label class="check-option" onclick="sel(this,'libido',5)"><div class="check-box"></div><div class="check-text">Strong or elevated<small>Prominent; hard to set aside; somewhat preoccupying</small></div></label>
+    <label class="check-option" onclick="sel(this,'libido',6)"><div class="check-box"></div><div class="check-text">Consuming or overwhelming<small>Dominant experience; couldn't redirect — or so absent it felt like a loss</small></div></label>
+  </div>
+  <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#fc288e;">🌸 Sexual activity</div>
+  <div class="card" style="--cat:#fc288e;--cat-rgb:252,40,142;">
+    <label class="check-option" onclick="sel(this,'sexActivity',1)"><div class="check-box"></div><div class="check-text">None</div></label>
+    <label class="check-option mid" onclick="sel(this,'sexActivity',2)"><div class="check-box"></div><div class="check-text">Yes — responsive<small>Participated but didn't initiate</small></div></label>
+    <label class="check-option" onclick="sel(this,'sexActivity',3)"><div class="check-box"></div><div class="check-text">Yes — initiated<small>Sought it out</small></div></label>
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:var(--purple);">🔮 Mood tone</div>
   <div class="card" style="--cat:#bf5af2;--cat-rgb:191,90,242;">
-    <label class="check-option" onclick="sel(this,'moodTone',6)"><div class="check-box"></div><div class="check-text">Expansive<small>Unusually open, high positive affect, actively good</small></div></label>
-    <label class="check-option" onclick="sel(this,'moodTone',5)"><div class="check-box"></div><div class="check-text">Uplifted<small>Genuine pleasure, engagement, interest in things</small></div></label>
-    <label class="check-option" onclick="sel(this,'moodTone',4)"><div class="check-box"></div><div class="check-text">Light<small>Emotionally open, present, no heaviness</small></div></label>
-    <label class="check-option mid" onclick="sel(this,'moodTone',3)"><div class="check-box"></div><div class="check-text">Flat<small>Emotionally neutral, neither pulled up nor down</small></div></label>
-    <label class="check-option" onclick="sel(this,'moodTone',2)"><div class="check-box"></div><div class="check-text">Heavy<small>Low-grade sadness present, still functional but effortful</small></div></label>
-    <label class="check-option" onclick="sel(this,'moodTone',1);document.getElementById('mood-severe').classList.remove('open')"><div class="check-box"></div><div class="check-text">Empty<small>Flat, no access to positive feeling, couldn't be moved by things</small></div></label>
-    <label class="check-option" onclick="sel(this,'moodTone',0);document.getElementById('mood-severe').classList.add('open')"><div class="check-box"></div><div class="check-text">Hopeless or could not function<small>Sense things won't improve; or tasks felt insurmountable</small></div></label>
+    <label class="check-option" onclick="sel(this,'moodTone',1)"><div class="check-box"></div><div class="check-text">Ecstatic<small>Euphoric or elated; an intensity that stands out even on a good day</small></div></label>
+    <label class="check-option" onclick="sel(this,'moodTone',2)"><div class="check-box"></div><div class="check-text">Open and happy<small>Genuinely good; light, warm, easy to be in</small></div></label>
+    <label class="check-option mid" onclick="sel(this,'moodTone',3);document.getElementById('mood-severe').classList.remove('open')"><div class="check-box"></div><div class="check-text">Neutral<small>Nothing weighing on me; neither up nor down</small></div></label>
+    <label class="check-option" onclick="sel(this,'moodTone',4);document.getElementById('mood-severe').classList.remove('open')"><div class="check-box"></div><div class="check-text">Low-grade sadness<small>Named feeling; there, but moved through the day normally</small></div></label>
+    <label class="check-option" onclick="sel(this,'moodTone',5);document.getElementById('mood-severe').classList.remove('open')"><div class="check-box"></div><div class="check-text">Heavy<small>Effort to engage; tasks cost more than they should</small></div></label>
+    <label class="check-option" onclick="sel(this,'moodTone',6);document.getElementById('mood-severe').classList.add('open')"><div class="check-box"></div><div class="check-text">Hopeless or completely empty<small>Sense it won't lift; or no feeling at all — the wall</small></div></label>
     <div class="collapsible" id="mood-severe">
       <div class="divider"></div>
       <div class="multi-option" onclick="ms(this,'moodFlags','could-not-function')" style="--cat:#bf5af2;"><div class="multi-box"></div><div class="multi-text" style="color:#bf5af2;">Could not function<small style="color:rgba(191,90,242,0.7);">Tasks felt insurmountable, couldn't get through the day</small></div></div>
@@ -444,13 +463,12 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter'
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#fc4159;">🎢 Emotional reactivity</div>
   <div class="card" style="--cat:#fc4159;--cat-rgb:252,65,89;">
-    <label class="check-option" onclick="sel(this,'reactivity',6)"><div class="check-box"></div><div class="check-text">Actively warm<small>Patient, kind, sought to connect, easy to be around</small></div></label>
-    <label class="check-option" onclick="sel(this,'reactivity',5)"><div class="check-box"></div><div class="check-text">Mildly warm<small>Slightly more open or patient than usual</small></div></label>
-    <label class="check-option" onclick="sel(this,'reactivity',4)"><div class="check-box"></div><div class="check-text">At ease<small>Calm, no friction in interactions with others</small></div></label>
-    <label class="check-option mid" onclick="sel(this,'reactivity',3)"><div class="check-box"></div><div class="check-text">Unremarkable<small>No notable reactivity in either direction</small></div></label>
-    <label class="check-option" onclick="sel(this,'reactivity',2)"><div class="check-box"></div><div class="check-text">Mildly reactive<small>Small irritations registered, didn't act on them</small></div></label>
-    <label class="check-option" onclick="sel(this,'reactivity',1);document.getElementById('reactivity-severe').classList.remove('open')"><div class="check-box"></div><div class="check-text">Snapped or lost control<small>Reacted in a way I noticed or regret</small></div></label>
-    <label class="check-option" onclick="sel(this,'reactivity',0);document.getElementById('reactivity-severe').classList.add('open')"><div class="check-box"></div><div class="check-text">Shut down<small>Couldn't interact, removed myself entirely</small></div></label>
+    <label class="check-option" onclick="sel(this,'reactivity',1)"><div class="check-box"></div><div class="check-text">Calm and patient<small>No friction; easy to be around; nothing snagged</small></div></label>
+    <label class="check-option" onclick="sel(this,'reactivity',2)"><div class="check-box"></div><div class="check-text">Noticed irritations<small>Small things caught my attention; didn't act on any of them</small></div></label>
+    <label class="check-option mid" onclick="sel(this,'reactivity',3);document.getElementById('reactivity-severe').classList.remove('open')"><div class="check-box"></div><div class="check-text">More reactive than usual<small>Had to work to stay measured; managed but it required effort</small></div></label>
+    <label class="check-option" onclick="sel(this,'reactivity',4);document.getElementById('reactivity-severe').classList.remove('open')"><div class="check-box"></div><div class="check-text">Clearly irritable<small>Short with people; hard to be around; friction was obvious</small></div></label>
+    <label class="check-option" onclick="sel(this,'reactivity',5);document.getElementById('reactivity-severe').classList.remove('open')"><div class="check-box"></div><div class="check-text">Snapped or lost control<small>Reacted in a way I noticed or regret; couldn't fully contain it</small></div></label>
+    <label class="check-option" onclick="sel(this,'reactivity',6);document.getElementById('reactivity-severe').classList.add('open')"><div class="check-box"></div><div class="check-text">Couldn't be around people<small>Had to remove myself entirely; interaction wasn't possible</small></div></label>
     <div class="collapsible" id="reactivity-severe">
       <div class="divider"></div>
       <div class="multi-option" onclick="ms(this,'reactivityFlags','lost-control')" style="--cat:#fc4159;"><div class="multi-box"></div><div class="multi-text" style="color:#fc4159;">Lost control<small style="color:rgba(252,65,89,0.7);">Said or did something I regret, couldn't stop the reaction</small></div></div>
@@ -459,27 +477,28 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter'
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#f186ca;">🧠 Mental tension</div>
   <div class="card" style="--cat:#f186ca;--cat-rgb:241,134,202;">
-    <label class="check-option" onclick="sel(this,'tension',6)"><div class="check-box"></div><div class="check-text">Settled<small>Unusually quiet mind, deeply at ease</small></div></label>
-    <label class="check-option" onclick="sel(this,'tension',5)"><div class="check-box"></div><div class="check-text">Calm<small>No notable mental noise, body relaxed</small></div></label>
-    <label class="check-option" onclick="sel(this,'tension',4)"><div class="check-box"></div><div class="check-text">Low hum<small>Minor background tension, present but not disruptive</small></div></label>
-    <label class="check-option mid" onclick="sel(this,'tension',3)"><div class="check-box"></div><div class="check-text">Unremarkable<small>No notable tension in either direction</small></div></label>
-    <label class="check-option" onclick="sel(this,'tension',2)"><div class="check-box"></div><div class="check-text">On edge<small>Keyed up, background restlessness, harder to settle than usual</small></div></label>
-    <label class="check-option" onclick="sel(this,'tension',1);document.getElementById('tension-severe').classList.remove('open')"><div class="check-box"></div><div class="check-text">Racing thoughts<small>Body tense, difficulty concentrating, hard to settle</small></div></label>
-    <label class="check-option" onclick="sel(this,'tension',0);document.getElementById('tension-severe').classList.add('open')"><div class="check-box"></div><div class="check-text">Overwhelmed or panic<small>Couldn't contain anxious thoughts; or physical symptoms present</small></div></label>
-    <div class="collapsible" id="tension-severe">
-      <div class="divider"></div>
-      <div class="multi-option" onclick="ms(this,'tensionFlags','panic')" style="--cat:#f186ca;"><div class="multi-box"></div><div class="multi-text" style="color:#f186ca;">Physical panic symptoms present<small style="color:rgba(241,134,202,0.7);">Racing heart, chest tightness, difficulty breathing</small></div></div>
-    </div>
+    <label class="check-option" onclick="sel(this,'tension',1)"><div class="check-box"></div><div class="check-text">Quiet and at ease<small>Mind settled; no anxiety, no tension, nothing pulling</small></div></label>
+    <label class="check-option" onclick="sel(this,'tension',2)"><div class="check-box"></div><div class="check-text">Background hum<small>Faint tension present; not disruptive; easily set aside</small></div></label>
+    <label class="check-option mid" onclick="sel(this,'tension',3);document.getElementById('tension-severe').classList.remove('open')"><div class="check-box"></div><div class="check-text">On edge<small>Keyed up; harder to settle than usual; couldn't fully relax</small></div></label>
+    <label class="check-option" onclick="sel(this,'tension',4);document.getElementById('tension-severe').classList.remove('open')"><div class="check-box"></div><div class="check-text">Racing thoughts<small>Body tense; mind wouldn't quiet; difficulty concentrating</small></div></label>
+    <label class="check-option" onclick="sel(this,'tension',5);document.getElementById('tension-severe').classList.remove('open')"><div class="check-box"></div><div class="check-text">Significant anxiety<small>Very hard to settle; preoccupied; thoughts kept returning</small></div></label>
+    <label class="check-option" onclick="sel(this,'tension',6)"><div class="check-box"></div><div class="check-text">Overwhelmed or panic<small>Couldn't contain it; physical symptoms present; had to stop</small></div></label>
+    <div class="divider"></div>
+      <div style="font-size:12px;color:rgba(241,134,202,0.6);padding:2px 0 6px 2px;letter-spacing:0.03em;">PHYSICAL SYMPTOMS — select any that apply</div>
+      <div class="multi-option" onclick="ms(this,'tensionFlags','heart')" style="--cat:#f186ca;"><div class="multi-box"></div><div class="multi-text" style="color:#f186ca;">Racing or pounding heart<small style="color:rgba(241,134,202,0.7);">Heart rate elevated or noticeably irregular</small></div></div>
+      <div class="multi-option" onclick="ms(this,'tensionFlags','chest')" style="--cat:#f186ca;"><div class="multi-box"></div><div class="multi-text" style="color:#f186ca;">Chest tightness or difficulty breathing<small style="color:rgba(241,134,202,0.7);">Pressure, constriction, or shortness of breath</small></div></div>
+      <div class="multi-option" onclick="ms(this,'tensionFlags','shaking')" style="--cat:#f186ca;"><div class="multi-box"></div><div class="multi-text" style="color:#f186ca;">Trembling or shaking<small style="color:rgba(241,134,202,0.7);">Hands, body, or voice; internal tremor counts</small></div></div>
+      <div class="multi-option" onclick="ms(this,'tensionFlags','nausea')" style="--cat:#f186ca;"><div class="multi-box"></div><div class="multi-text" style="color:#f186ca;">Nausea or stomach distress<small style="color:rgba(241,134,202,0.7);">Anxiety-driven GI response; knot, churning, or nausea</small></div></div>
+      <div class="multi-option" onclick="ms(this,'tensionFlags','flush')" style="--cat:#f186ca;"><div class="multi-box"></div><div class="multi-text" style="color:#f186ca;">Hot flush or flushing<small style="color:rgba(241,134,202,0.7);">Sudden heat, redness, or sweating; may be hormonal or anxiety-driven</small></div></div>
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#41bcb7;">🫧 Cognitive tone</div>
   <div class="card" style="--cat:#41bcb7;--cat-rgb:65,188,183;">
-    <label class="check-option" onclick="sel(this,'cogTone',6)"><div class="check-box"></div><div class="check-text">Expansive<small>Future feels wide open, thoughts felt effortless and constructive</small></div></label>
-    <label class="check-option" onclick="sel(this,'cogTone',5)"><div class="check-box"></div><div class="check-text">Optimistic<small>Mild positive lean, things felt manageable and clear</small></div></label>
-    <label class="check-option" onclick="sel(this,'cogTone',4)"><div class="check-box"></div><div class="check-text">Slightly positive<small>Fractionally clearer or more open than usual</small></div></label>
-    <label class="check-option mid" onclick="sel(this,'cogTone',3)"><div class="check-box"></div><div class="check-text">Balanced<small>No distortion in either direction, thoughts felt proportionate</small></div></label>
-    <label class="check-option" onclick="sel(this,'cogTone',2)"><div class="check-box"></div><div class="check-text">Negative filter<small>Slight pessimistic lean, minor distortion</small></div></label>
-    <label class="check-option" onclick="sel(this,'cogTone',1);document.getElementById('cogtone-severe').classList.remove('open')"><div class="check-box"></div><div class="check-text">Catastrophising<small>Specific things felt worse than they probably are, hard to correct</small></div></label>
-    <label class="check-option" onclick="sel(this,'cogTone',0);document.getElementById('cogtone-severe').classList.add('open')"><div class="check-box"></div><div class="check-text">Globally negative or no positive access<small>World and future felt bleak; or couldn't find any positive frame</small></div></label>
+    <label class="check-option" onclick="sel(this,'cogTone',1)"><div class="check-box"></div><div class="check-text">No negative thoughts<small>Thoughts felt clear and proportionate about myself and my situation</small></div></label>
+    <label class="check-option" onclick="sel(this,'cogTone',2)"><div class="check-box"></div><div class="check-text">Fleeting self-criticism<small>Minor negative thoughts about myself; corrected quickly</small></div></label>
+    <label class="check-option mid" onclick="sel(this,'cogTone',3);document.getElementById('cogtone-severe').classList.remove('open')"><div class="check-box"></div><div class="check-text">Recurring self-doubt<small>Returned repeatedly; harder to dismiss; some hopelessness or self-blame</small></div></label>
+    <label class="check-option" onclick="sel(this,'cogTone',4);document.getElementById('cogtone-severe').classList.remove('open')"><div class="check-box"></div><div class="check-text">Persistent hopelessness<small>Strong sense that things won't improve; self-critical thoughts dominated</small></div></label>
+    <label class="check-option" onclick="sel(this,'cogTone',5);document.getElementById('cogtone-severe').classList.remove('open')"><div class="check-box"></div><div class="check-text">Marked — couldn't counter them<small>Pervasive negative self-evaluation; couldn't find any corrective thought</small></div></label>
+    <label class="check-option" onclick="sel(this,'cogTone',6);document.getElementById('cogtone-severe').classList.add('open')"><div class="check-box"></div><div class="check-text">Extreme — overwhelming<small>Completely hopeless; felt worthless or that situation was permanent</small></div></label>
     <div class="collapsible" id="cogtone-severe">
       <div class="divider"></div>
       <div class="multi-option" onclick="ms(this,'cogToneFlags','no-positive-access')" style="--cat:#41bcb7;"><div class="multi-box"></div><div class="multi-text" style="color:#41bcb7;">No positive access<small style="color:rgba(65,188,183,0.7);">Couldn't find any relief or positive frame, everything felt closed</small></div></div>
@@ -487,34 +506,34 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter'
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:var(--blue);">💎 Cognitive clarity</div>
   <div class="card" style="--cat:#0a84ff;--cat-rgb:10,132,255;">
-    <label class="check-option" onclick="sel(this,'attention',6)"><div class="check-box"></div><div class="check-text">Sharp<small>Exceptional clarity, retained everything, high output all day</small></div></label>
-    <label class="check-option" onclick="sel(this,'attention',5)"><div class="check-box"></div><div class="check-text">Focused<small>Good cognitive function, tracking and retaining well</small></div></label>
-    <label class="check-option" onclick="sel(this,'attention',4)"><div class="check-box"></div><div class="check-text">Slightly above<small>Marginally more alert or retentive than usual</small></div></label>
-    <label class="check-option mid" onclick="sel(this,'attention',3)"><div class="check-box"></div><div class="check-text">Unremarkable<small>Normal cognitive function, nothing to note</small></div></label>
-    <label class="check-option" onclick="sel(this,'attention',2)"><div class="check-box"></div><div class="check-text">Minor lapses<small>Small gaps in attention, self-correcting quickly</small></div></label>
-    <label class="check-option" onclick="sel(this,'attention',1)"><div class="check-box"></div><div class="check-text">Moderate fog<small>Re-reading things, losing trains of thought, tasks harder than usual</small></div></label>
-    <label class="check-option" onclick="sel(this,'attention',0)"><div class="check-box"></div><div class="check-text">Severe fog<small>Couldn't hold coherent thoughts, noticeable to others or required withdrawal</small></div></label>
+    <label class="check-option" onclick="sel(this,'attention',1)"><div class="check-box"></div><div class="check-text">Sharp; no difficulty<small>Exceptional clarity; retained everything; high output</small></div></label>
+    <label class="check-option" onclick="sel(this,'attention',2)"><div class="check-box"></div><div class="check-text">Minor lapses only<small>Small gaps; self-correcting quickly; no real impact</small></div></label>
+    <label class="check-option mid" onclick="sel(this,'attention',3)"><div class="check-box"></div><div class="check-text">Noticeable difficulty<small>Re-reading things; losing trains of thought; tasks took more effort</small></div></label>
+    <label class="check-option" onclick="sel(this,'attention',4)"><div class="check-box"></div><div class="check-text">Significant fog<small>Hard to track or retain; required deliberate effort to follow conversations or tasks</small></div></label>
+    <label class="check-option" onclick="sel(this,'attention',5)"><div class="check-box"></div><div class="check-text">Couldn't hold a thought<small>Couldn't complete coherent sequences; kept losing the thread</small></div></label>
+    <label class="check-option" onclick="sel(this,'attention',6)"><div class="check-box"></div><div class="check-text">Severe; noticeable to others<small>Had to withdraw or stop; impairment was visible or required accommodation</small></div></label>
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#3dbcb8;">🛸 Functional capacity</div>
   <div class="card" style="--cat:#3dbcb8;--cat-rgb:61,188,184;" id="func-card">
-    <label class="check-option" onclick="sel(this,'functional',5)"><div class="check-box"></div><div class="check-text"><span id="func-opt-5">Above expectations</span><small id="func-sub-5">High output, felt capable and engaged beyond what the day required</small></div></label>
-    <label class="check-option mid" onclick="sel(this,'functional',4)"><div class="check-box"></div><div class="check-text"><span id="func-opt-4">As expected</span><small id="func-sub-4">Performed at normal capacity for the type of day</small></div></label>
-    <label class="check-option" onclick="sel(this,'functional',3)"><div class="check-box"></div><div class="check-text"><span id="func-opt-3">Mildly below</span><small id="func-sub-3">Slightly less output or engagement than the situation required</small></div></label>
-    <label class="check-option" onclick="sel(this,'functional',2)"><div class="check-box"></div><div class="check-text"><span id="func-opt-2">Moderately impaired</span><small id="func-sub-2">Got through obligations but it required significant effort</small></div></label>
-    <label class="check-option" onclick="sel(this,'functional',1)"><div class="check-box"></div><div class="check-text"><span id="func-opt-1">Significantly impaired</span><small id="func-sub-1">Had to mask or push through just to appear functional</small></div></label>
-    <label class="check-option" onclick="sel(this,'functional',0)"><div class="check-box"></div><div class="check-text"><span id="func-opt-0">Could not meet obligations</span><small id="func-sub-0">Had to withdraw, call in, or cancel entirely</small></div></label>
+    <label class="check-option" onclick="sel(this,'functional',1)"><div class="check-box"></div><div class="check-text">Full capacity<small>Performed at or above what was needed; no interference</small></div></label>
+    <label class="check-option" onclick="sel(this,'functional',2)"><div class="check-box"></div><div class="check-text">Slight reduction<small>Marginally less than usual; didn't require real effort to compensate</small></div></label>
+    <label class="check-option mid" onclick="sel(this,'functional',3)"><div class="check-box"></div><div class="check-text">Noticeably below capacity<small>Fell short of what the situation called for; I noticed it</small></div></label>
+    <label class="check-option" onclick="sel(this,'functional',4)"><div class="check-box"></div><div class="check-text">Got through it, but it cost<small>Met obligations but required significantly more effort than it should have</small></div></label>
+    <label class="check-option" onclick="sel(this,'functional',5)"><div class="check-box"></div><div class="check-text">Masking or pushing through<small>Had to perform functioning; the gap between what I showed and felt was large</small></div></label>
+    <label class="check-option" onclick="sel(this,'functional',6)"><div class="check-box"></div><div class="check-text">Couldn't meet obligations<small>Had to withdraw, call in, or cancel; the day wasn't survivable as planned</small></div></label>
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#b9ee35;">☘️ Social engagement</div>
   <div class="card" style="--cat:#b9ee35;--cat-rgb:185,238,53;">
     <div>
-      <label class="check-option" onclick="sel(this,'social',4);clearSocialNA()"><div class="check-box"></div><div class="check-text">Connected<small>Actively sought out people, felt warm and present</small></div></label>
-      <label class="check-option mid" onclick="sel(this,'social',3);clearSocialNA()"><div class="check-box"></div><div class="check-text">Normal<small>Interactions happened, no notable positive or negative quality</small></div></label>
-      <label class="check-option" onclick="sel(this,'social',2);clearSocialNA()"><div class="check-box"></div><div class="check-text">Withdrawn<small>Present but less engaged than the situation called for</small></div></label>
-      <label class="check-option" onclick="sel(this,'social',1);clearSocialNA()"><div class="check-box"></div><div class="check-text">Avoided<small>Kept to myself, cancelled plans, deflected or didn't respond</small></div></label>
-      <label class="check-option" onclick="sel(this,'social',0);clearSocialNA()"><div class="check-box"></div><div class="check-text">Conflict<small>Had a difficult interaction; whether or not I caused it, my state was a factor</small></div></label>
+      <label class="check-option" onclick="sel(this,'social',1);clearSocialNA()"><div class="check-box"></div><div class="check-text">Engaged normally<small>Warm or at ease; no avoidance; showed up without friction</small></div></label>
+      <label class="check-option" onclick="sel(this,'social',2);clearSocialNA()"><div class="check-box"></div><div class="check-text">Slightly withdrawn<small>Present but a little quieter or less engaged than usual</small></div></label>
+      <label class="check-option mid" onclick="sel(this,'social',3);clearSocialNA()"><div class="check-box"></div><div class="check-text">Noticeably withdrawn<small>Present but less engaged than the situation called for; others may have noticed</small></div></label>
+      <label class="check-option" onclick="sel(this,'social',4);clearSocialNA()"><div class="check-box"></div><div class="check-text">Avoided or cancelled<small>Kept to myself; deflected or skipped interactions I would normally have</small></div></label>
+      <label class="check-option" onclick="sel(this,'social',5);clearSocialNA()"><div class="check-box"></div><div class="check-text">Significantly withdrew<small>Isolated; couldn't sustain interaction; removed myself</small></div></label>
+      <label class="check-option" onclick="sel(this,'social',6);clearSocialNA()"><div class="check-box"></div><div class="check-text">Conflict or complete withdrawal<small>Had a difficult interaction; or completely removed myself; state was clearly a factor</small></div></label>
     </div>
     <div class="divider"></div>
-    <label class="check-option" onclick="socialNA(this)" style="--cat:#636366;"><div class="check-box" style="border-color:rgba(174,174,178,.6);"></div><div class="check-text" style="color:rgba(235,235,245,.45);">Not applicable<small style="color:rgba(235,235,245,.3);">No social interactions today — scale above not relevant</small></div></label>
+    <label class="check-option" onclick="socialNA(this)" style="--cat:#636366;"><div class="check-text" style="color:rgba(235,235,245,.45);">Not applicable<small style="color:rgba(235,235,245,.3);">No social interactions today — scale above not relevant</small></div></label>
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#87ceeb;">🗺️ Context</div>
   <div class="card" style="--cat:#1c6b8a;--cat-rgb:28,107,138;">
@@ -780,6 +799,12 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter'
 <script>
 const STORE='cycleLog_v4',SSTORE='cycleSet_v4';
 function getLogs(){try{const l=JSON.parse(localStorage.getItem(STORE)||'[]');return l.sort((a,b)=>b.date.localeCompare(a.date));}catch{return[];}}
+function napToggle(cb){
+  const dur=document.getElementById('napDurInput');
+  if(cb.checked){dur.style.display='';FD.napped=true;}
+  else{dur.style.display='none';FD.napped=false;FD.napDur='';dur.value='';}
+  save();
+}
 function saveLogs(l){localStorage.setItem(STORE,JSON.stringify(l));}
 function getSettings(){const d={lastPeriod:'2026-04-06',cycleLength:29,name:'Shaili',rx1Dose:10,cycleHistory:[]};try{return Object.assign(d,JSON.parse(localStorage.getItem(SSTORE)||'{}'));}catch{return d;}}
 function saveSetting(k,v){const s=getSettings();s[k]=v;localStorage.setItem(SSTORE,JSON.stringify(s));updateHeader();showToast('Saved');}
@@ -798,9 +823,8 @@ function phaseInfo(d){
 function phaseColor(p){return{menstrual:'#ff375f','early-follicular':'#ff9f0a','late-follicular':'#30d158',ovulation:'#0a84ff','early-luteal':'#64d2ff','late-luteal':'#bf5af2'}[p]||'#c8a97e';}
 function drspScore(field,val){
   if(val===undefined||val===null)return null;
-  const goodHigh=['reactivity','moodTone','tension','energy','attention','cogTone','sleepQ','functional','social','libido'];
-  if(goodHigh.includes(field)){const mx={reactivity:6,moodTone:6,tension:6,energy:6,attention:6,cogTone:6,sleepQ:6,functional:5,social:4,libido:4}[field]||6;return Math.min(6,Math.max(1,mx-val+1));}
-  return Math.min(6,Math.max(1,val+1));
+  // All fields now store DRSP 1-6 directly (1 = not at all, 6 = extreme)
+  return Math.min(6,Math.max(1,Math.round(val)));
 }
 let FD={},MS={},FS={};
 function sel(el,field,val){el.parentElement.querySelectorAll('.check-option').forEach(e=>e.classList.remove('selected'));el.classList.add('selected');FD[field]=val;if(field==='bleeding')onBleedChange(val);}
@@ -831,7 +855,7 @@ function checkPeriodStart(val){
   const s=getSettings();const today=todayKey();
   const lastPeriod=new Date(s.lastPeriod+'T00:00:00');const todayDate=new Date(today+'T00:00:00');
   const days=Math.floor((todayDate-lastPeriod)/86400000);
-  if(days<18)return;
+  if(days<10)return;
   const logs=getLogs();const yesterday=new Date(todayDate);yesterday.setDate(yesterday.getDate()-1);
   const yLog=logs.find(l=>l.date===localDateKey(yesterday));
   if(yLog&&['light','medium','heavy'].includes(yLog.bleeding))return;
@@ -934,7 +958,7 @@ function saveLog(e){
     illRx:document.getElementById('ill-rx').value,
     allergyPresent:FS.allergy||'no',allergySx:MS.allergySx||[],
     allergyMeds:MS.allergyMeds||[],allergyTrigger:document.getElementById('allergy-trigger').value,
-    medNotes:MS.medNotes||[],painLoc:MS.painLoc||[],acneLoc:MS.acneLoc||[],sleepFlags:MS.sleepFlags||[],socialFlags:MS.socialFlags||[],reactivityFlags:MS.reactivityFlags||[],tensionFlags:MS.tensionFlags||[],moodFlags:MS.moodFlags||[],cogToneFlags:MS.cogToneFlags||[],appetiteFlags:MS.appetiteFlags||[],
+    medNotes:MS.medNotes||[],painLoc:MS.painLoc||[],acneLoc:MS.acneLoc||[],sleepFlags:MS.sleepFlags||[],socialFlags:MS.socialFlags||[],reactivityFlags:MS.reactivityFlags||[],tensionFlags:MS.tensionFlags||[],moodFlags:MS.moodFlags||[],cogToneFlags:MS.cogToneFlags||[],appetiteFlags:MS.appetiteFlags||[],napped:MS.napped||false,napDur:MS.napDur||'',
     stressSource:document.getElementById('stress-source').value,
     notes:document.getElementById('notes-field').value,
     savedAt:new Date().toISOString()
@@ -1017,25 +1041,27 @@ const SLEEPHRS={'<4':'Under 4 hrs','4-5':'4–5 hrs','5-6':'5–6 hrs','6-7':'6�
 const SLEEPLATENCY={'<10':'Under 10 min','10-20':'10–20 min','20-40':'20–40 min','>40':'Over 40 min','couldnt':'Couldn\'t fall asleep'};
 const EXERCISE={'rest':'Rest day','light':'Light','moderate':'Moderate','heavy':'Heavy'};
 const EXERCISE_DUR={'<20':'Under 20 min','20-40':'20–40 min','40-60':'40–60 min','>60':'Over 60 min'};
-const REACTIVITY_L=['Shut down — removed myself; couldn\'t engage','Snapped or lost control — reacted in a way I noticed or regret','Mildly reactive — small irritations registered; didn\'t act on them','Unremarkable — no notable reactivity in either direction','At ease — calm; no friction in interactions with others','Mildly warm — slightly more open or patient than usual','Actively warm — patient; kind; sought to connect; easy to be around'];
-const MOOD_L=['Hopeless or could not function — sense things won\'t improve; or tasks felt insurmountable','Empty — flat; no access to positive feeling; couldn\'t be moved by things','Heavy — low-grade sadness present; still functional but effortful','Flat — emotionally neutral; neither pulled up nor down','Light — emotionally open; present; no heaviness','Uplifted — genuine pleasure; engagement; interest in things','Expansive — unusually open; high positive affect; actively good'];
-const TENSION_L=['Overwhelmed or panic — couldn\'t contain anxious thoughts; or physical symptoms present','Racing thoughts — body tense; difficulty concentrating; hard to settle','On edge — keyed up; background restlessness; harder to settle than usual','Unremarkable — no notable tension in either direction','Low hum — minor background tension; present but not disruptive','Calm — no notable mental noise; body relaxed','Settled — unusually quiet mind; deeply at ease'];
-const ENERGY_L=['Exhausted or depleted — wanted to cancel everything; or couldn\'t sustain activity at all','Fatigued — required deliberate effort for ordinary tasks','Mild drag — slight tiredness; still completed everything expected','Normal — adequate energy; day proceeded without resistance','Slightly above — marginally more energy than usual; nothing notable','Good — solid energy through the day; no notable dips','High drive — body felt ready and capable; wanted to move'];
-const ATTENTION_L=['Severe fog — couldn\'t hold coherent thoughts; noticeable to others or required withdrawal','Moderate fog — re-reading things; losing trains of thought; tasks harder than usual','Minor lapses — small gaps in attention; self-correcting quickly','Unremarkable — normal cognitive function; nothing to note','Slightly above — marginally more alert or retentive than usual','Focused — good cognitive function; tracking and retaining well','Sharp — exceptional clarity; retained everything; high output all day'];
-const COGTONE_L=['Globally negative or no positive access — world and future felt bleak; or couldn\'t find any positive frame','Catastrophising — specific things felt worse than they probably are; hard to correct','Negative filter — slight pessimistic lean; minor distortion','Balanced — no distortion in either direction; thoughts felt proportionate','Slightly positive — fractionally clearer or more open than usual','Optimistic — mild positive lean; things felt manageable and clear','Expansive — future feels wide open; thoughts felt effortless and constructive'];
-const SLEEPQ_L=['Unrested despite sleeping — hours logged but no recovery; felt worse than not sleeping','Barely slept — less than a few hours; or in and out all night without rest','Poor — woke multiple times; significant difficulty returning to sleep','Fragmented — some waking or long time to fall asleep; functional but not restored','Adequate — slept through; woke functional and able to get on with the day','Restored — woke feeling genuinely rested and ready','Could have kept sleeping — deeply rested; woke reluctantly; felt no readiness to rise'];
-const FUNCTIONAL_L=['Could not meet obligations — had to withdraw or call in or cancel entirely','Significantly impaired — had to mask or push through just to appear functional','Moderately impaired — got through obligations but required significant effort','Mildly below — slightly less output or engagement than the situation required','As expected — performed at normal capacity for the type of day','Above expectations — high output; felt capable and engaged beyond usual'];
-const SOCIAL_L=['Conflict — had a difficult interaction; my state was a factor whether or not I caused it','Avoided — kept to myself; cancelled plans; deflected or didn\'t respond','Withdrawn — present but less engaged than the situation called for','Normal — interactions happened; no notable positive or negative quality','Connected — actively sought out people; felt warm and present'];
-const LIBIDO_L=['Absent — no signal whatsoever; not on my radar at all','Low — present but weak; easily ignored; not interfering','Present — registered; neither strong nor suppressed','Strong — clearly present; difficult to ignore','Dominant — significantly elevated; actively present throughout the day'];
-const APPETITE_L=['Absent — no hunger signal whatsoever; food unappealing','Suppressed — had to eat by schedule; no body drive to eat','Slightly suppressed — mildly less hungry than usual; easily managed','Unremarkable — hunger arose and resolved normally; nothing to note','Slightly elevated — mildly more hungry than usual; easily managed','Elevated — strong pull toward food; wanted more than usual','Insatiable — ate and still wanted more; hunger didn\'t resolve'];
-const EATINGBEH_L=['Hunger only — ate in direct response to hunger signals; nothing to note','Mindful excess — ate beyond hunger as a conscious choice; remained in control throughout','Emotional eating — used food to manage an emotional state; aware of it while doing it','Loss of control — urge to eat beyond satiation; partially or fully acted on'];
-const BLOATING_L=['None — abdomen flat and comfortable; no awareness of it','Mild fullness — noticeable after eating; not uncomfortable','Uncomfortable — clothes feel tight; aware of it throughout the day','Painful — distended; physically distressing; affected movement or posture'];
-const FOODNOISE_L=['None — food didn\'t cross my mind between meals','Minimal — one or two fleeting thoughts; no effort to dismiss','Present — food surfaced periodically between meals; easily dismissed','Persistent — food thoughts returned repeatedly; mild but ongoing distraction','Intrusive — food preoccupation interfered with concentration on tasks','Consuming — couldn\'t sustain focus on other things; food dominated thinking'];
-const PAIN_L=['None — physically comfortable; no awareness of pain','Mild — present and noticed; didn\'t interfere with function','Moderate — interfered with comfort or normal movement','Severe — couldn\'t ignore; altered behaviour or movement'];
-const HEADACHE_L=['None','Mild — present; didn\'t need to change anything','Moderate — affected concentration or activity level','Severe — required medication or rest; couldn\'t push through'];
-const ACNE_L=['Clear — no active breakouts','1–2 spots not inflamed — present but flat; not tender','Several spots some inflamed — more than 2; at least one raised or red','Multiple inflamed or cystic — several active; some deep or painful'];
-const CRAMPING_L=['None','Mild — present; manageable without medication','Moderate — required pain relief; or significantly affected comfort','Severe — debilitating; limited normal activity'];
-function sl(val,arr){if(val===undefined||val===null)return null;return arr[val]!==undefined?arr[val]:String(val);}
+const REACTIVITY_L=['Calm and patient — no friction; easy to be around; nothing snagged','Noticed irritations — small things caught my attention; didn\'t act on any of them','More reactive than usual — had to work to stay measured; managed but it required effort','Clearly irritable — short with people; hard to be around; friction was obvious','Snapped or lost control — reacted in a way I noticed or regret; couldn\'t fully contain it','Couldn\'t be around people — had to remove myself entirely; interaction wasn\'t possible'];
+const MOOD_L=['Ecstatic — euphoric or elated; an intensity that stands out even on a good day','Open and happy — genuinely good; light, warm, easy to be in','Neutral — nothing weighing on me; neither up nor down','Low-grade sadness — named feeling; there, but moved through the day normally','Heavy — effort to engage; tasks cost more than they should','Hopeless or completely empty — sense it won\'t lift; or no feeling at all — the wall'];
+const TENSION_L=['Quiet and at ease — mind settled; no anxiety, no tension, nothing pulling','Background hum — faint tension present; not disruptive; easily set aside','On edge — keyed up; harder to settle than usual; couldn\'t fully relax','Racing thoughts — body tense; mind wouldn\'t quiet; difficulty concentrating','Significant anxiety — very hard to settle; preoccupied; thoughts kept returning','Overwhelmed or panic — couldn\'t contain it; physical symptoms present; had to stop'];
+const ENERGY_L=['Ready and capable — body felt ready and capable; no resistance','Slight tiredness only — still completed everything without effort','Noticeably tired — tasks required slightly more effort than usual','Required deliberate effort — ordinary tasks took real effort; dips in the day','Pushed through; it cost — very low energy; completing things had a real toll','Couldn\'t sustain activity — wanted to cancel everything; functioning was a struggle'];
+const ATTENTION_L=['Sharp; no difficulty — exceptional clarity; retained everything; high output','Minor lapses only — small gaps; self-correcting quickly; no real impact','Noticeable difficulty — re-reading things; losing trains of thought; tasks took more effort','Significant fog — hard to track or retain; required deliberate effort to follow conversations or tasks','Couldn\'t hold a thought — couldn\'t complete coherent sequences; kept losing the thread','Severe; noticeable to others — had to withdraw or stop; impairment was visible or required accommodation'];
+const COGTONE_L=['No negative thoughts — thoughts felt clear and proportionate about myself and my situation','Fleeting self-criticism — minor negative thoughts; corrected quickly','Recurring self-doubt — returned repeatedly; harder to dismiss; some hopelessness or self-blame','Persistent hopelessness — strong sense things won\'t improve; self-critical thoughts dominated','Marked — pervasive negative self-evaluation; couldn\'t find any corrective thought','Extreme — completely hopeless; felt worthless or that situation was permanent'];
+const SLEEPQ_L=['Restored — woke feeling genuinely rested and ready','Adequate — slept through; woke functional if not fully rested','Some waking or delay — functional but not restored; fell back asleep eventually','Woke multiple times — significant difficulty returning to sleep; rest was fragmented','Barely slept — less than a few hours; or in and out all night','Hours in bed, no recovery — felt worse than not sleeping; completely unrestorative'];
+const FUNCTIONAL_L=['Full capacity — performed at or above what was needed; no interference','Slight reduction — marginally less than usual; didn\'t require real effort to compensate','Noticeably below capacity — fell short of what the situation called for; I noticed it','Got through it, but it cost — met obligations but required significantly more effort than it should have','Masking or pushing through — had to perform functioning; the gap between what I showed and felt was large','Couldn\'t meet obligations — had to withdraw, call in, or cancel; the day wasn\'t survivable as planned'];
+const SOCIAL_L=['Engaged normally — warm or at ease; no avoidance; showed up without friction','Slightly withdrawn — present but a little quieter or less engaged than usual','Noticeably withdrawn — less engaged than the situation called for; others may have noticed','Avoided or cancelled — kept to myself; deflected or skipped interactions I would normally have','Significantly withdrew — isolated; couldn\'t sustain interaction; removed myself','Conflict or complete withdrawal — had a difficult interaction; or completely removed myself; state was clearly a factor'];
+const LIBIDO_L=['Completely absent — no awareness; no pull, no signal whatsoever','Faint or suppressed — barely registered; noticeably less than usual','Quiet but present — there in the background; not demanding attention','Clearly present — noticeable; in my awareness but manageable','Strong or elevated — prominent; hard to set aside; somewhat preoccupying','Consuming or overwhelming — dominant experience; couldn\'t redirect; or so absent it felt like a loss'];
+const APPETITE_L=['No hunger signal — no awareness of appetite; food wasn\'t a factor at all','Faint or quiet — hunger barely registered; easy to ignore or overlook','Present, unremarkable — hunger came and went normally; nothing pulled my attention','Clearly noticeable — appetite in my awareness; starting to affect food decisions','Strong and persistent — hard to set aside; kept returning; required active effort to navigate','Consuming or completely absent — couldn\'t satisfy hunger regardless of intake; or no signal at all'];
+const EATINGBEH_L=['Ate to hunger only — ate when hungry, stopped when full; nothing notable','Ate past fullness — aware; chose to eat beyond satiation; felt in control','Ate to manage emotions — used food to cope with a feeling; recognised it while doing it','Lost control of eating — urge to eat past fullness was hard to resist; partially or fully acted on'];
+const BLOATING_L=['No bloating — abdomen flat and comfortable; no awareness','Noticeable after eating — present but not uncomfortable; resolved or subsided','Clothes feel tight — persistent throughout the day; uncomfortable but not distressing','Visibly distended — physically distressing; affected how I moved or sat'];
+const FOODNOISE_L=['No food thoughts — food didn\'t cross my mind between meals','Occasional fleeting thoughts — one or two brief moments; passed without effort','Periodic food thoughts — surfaced between meals a few times; easily let go','Persistent background noise — food thoughts kept returning; mild but ongoing distraction','Intrusive — broke concentration; food preoccupation interfered with tasks; hard to redirect','Consuming — dominated thinking; couldn\'t sustain focus; food was the primary thought'];
+const PAIN_L=['No pain — physically comfortable; no awareness of pain','Present and noticed — there, but didn\'t interfere with function','Interfered with comfort — affected normal movement or how I held myself','Couldn\'t ignore — altered behaviour, movement, or required management'];
+const HEADACHE_L=['No headache — completely absent; no awareness','Present and noticed — there, but didn\'t need to change anything','Affected concentration — had to slow down or adjust activity','Required medication or rest — couldn\'t push through without intervention'];
+const ACNE_L=['Clear — no active breakouts','1–2 spots — not inflamed; present but flat and not tender','Several spots — some inflamed; at least one raised or red','Multiple inflamed or cystic — several active; some deep or painful'];
+const NAUSEA_L=['No nausea — completely absent','Present and noticeable — passed on its own; didn\'t affect eating or activity','Persistent feeling — affected eating or hard to ignore; no vomiting','Vomited — or so severe it stopped normal activity'];
+const SEXACTIVITY_L=['None','Yes — responsive; participated but didn\'t initiate','Yes — initiated; sought it out'];
+const CRAMPING_L=['Not at all — no cramping','Mild — present; manageable without medication','Moderate — required pain relief or significantly affected comfort','Severe — debilitating; limited normal activity'];
+function sl(val,arr){if(val===undefined||val===null)return null;const idx=val-1;return arr[idx]!==undefined?arr[idx]:String(val);}
 
 let retroDate=null,retroFD={},retroMS={},retroFS={},editingExisting=false;
 
@@ -1060,7 +1086,7 @@ function buildRetroForm(cd,pi,e){
   e=e||{};
   // Pre-populate state from existing entry
   const strFields=['bleeding','clots','bowelMov','headacheType','dayType','exerciseIntensity','exerciseDur','caffeine','rx1','illSeverity','allergySev','daysSince'];
-  const numFields=['cramping','sleepQ','energy','appetite','eatingBeh','bloating','foodNoise','bristol','bowelEffort','bowelUrgency','pain','headache','acne','libido','attention','reactivity','moodTone','tension','cogTone','functional','social'];
+  const numFields=['cramping','sleepQ','energy','appetite','eatingBeh','bloating','foodNoise','bristol','bowelEffort','bowelUrgency','pain','headache','acne','nausea','libido','sexActivity','attention','reactivity','moodTone','tension','cogTone','functional','social'];
   strFields.forEach(f=>{if(e[f]!==undefined)retroFD[f]=e[f];});
   numFields.forEach(f=>{if(e[f]!==undefined)retroFD[f]=e[f];});
   ['sleepHrs','sleepLatency'].forEach(f=>{if(e[f])retroFD[f]=e[f];});
@@ -1072,24 +1098,25 @@ function buildRetroForm(cd,pi,e){
   const RD={
     bleeding:{'none':{h:'None — no bleeding',s:''},'spotting':{h:'Spotting',s:'Light staining, no product needed'},'light':{h:'Light',s:'Liner or light product, less than every 4 hrs'},'medium':{h:'Medium',s:'Regular product, every 3–4 hrs'},'heavy':{h:'Heavy',s:'Changing every 1–2 hrs or soaking through'}},
     clots:{'none':{h:'None',s:''},'small':{h:'Small clots',s:'Smaller than a 50 cent coin'},'large':{h:'Large clots',s:'Larger than a 50 cent coin'}},
-    cramping:{0:{h:'None',s:''},1:{h:'Mild',s:'Present, manageable without medication'},2:{h:'Moderate',s:'Required pain relief or significantly affected comfort'},3:{h:'Severe',s:'Debilitating, limited normal activity'}},
-    sleepQ:{6:{h:'Could have kept sleeping for hours',s:'Deeply rested, woke reluctantly, felt no readiness to rise'},5:{h:'Restored',s:'Woke feeling genuinely rested and ready'},4:{h:'Adequate',s:'Slept through, woke functional and able to get on with the day'},3:{h:'Fragmented',s:'Some waking or long time to fall asleep, functional but not restored'},2:{h:'Poor',s:'Woke multiple times, significant difficulty returning to sleep'},1:{h:'Barely slept',s:'Less than a few hours, or in and out all night without rest'},0:{h:'Unrested despite sleeping',s:'Hours logged but no recovery — felt worse than not sleeping'}},
-    energy:{6:{h:'High drive',s:'Body felt ready and capable, wanted to move, no resistance'},5:{h:'Good',s:'Solid energy through the day, no notable dips'},4:{h:'Slightly above',s:'Marginally more energy than usual, nothing notable'},3:{h:'Normal',s:'Adequate energy, day proceeded without resistance'},2:{h:'Mild drag',s:'Slight tiredness, still completed everything expected'},1:{h:'Fatigued',s:'Required deliberate effort for ordinary tasks'},0:{h:'Exhausted or depleted',s:"Wanted to cancel everything; or couldn't sustain activity at all"}},
-    appetite:{0:{h:'Absent',s:'No hunger signal whatsoever, food unappealing'},1:{h:'Suppressed',s:'Had to eat by schedule, no body drive to eat'},2:{h:'Slightly suppressed',s:'Mildly less hungry than usual, easily managed'},3:{h:'Unremarkable',s:'Hunger arose and resolved normally, nothing to note'},4:{h:'Slightly elevated',s:'Mildly more hungry than usual, easily managed'},5:{h:'Elevated',s:'Strong pull toward food, wanted more than usual'},6:{h:'Insatiable',s:"Ate and still wanted more, hunger didn't resolve"}},
-    eatingBeh:{0:{h:'Hunger only',s:'Ate in response to hunger signals, nothing to note'},1:{h:'Mindful excess',s:'Ate beyond hunger as a conscious choice, remained in control throughout'},2:{h:'Emotional eating',s:'Used food to manage an emotional state, aware of it while doing it'},3:{h:'Loss of control',s:'Urge to eat beyond satiation, partially or fully acted on'}},
-    bloating:{0:{h:'None',s:'Abdomen flat and comfortable, no awareness of it'},1:{h:'Mild fullness',s:'Noticeable after eating, not uncomfortable'},2:{h:'Uncomfortable',s:'Clothes feel tight, aware of it throughout the day'},3:{h:'Painful',s:'Distended, physically distressing, affected movement or posture'}},
-    foodNoise:{0:{h:'None',s:"Food didn't cross my mind between meals"},1:{h:'Minimal',s:'One or two fleeting thoughts, no effort to dismiss'},2:{h:'Present',s:'Food surfaced periodically between meals, easily dismissed'},3:{h:'Persistent',s:'Food thoughts returned repeatedly, mild but ongoing distraction'},4:{h:'Intrusive',s:'Food preoccupation interfered with concentration on tasks'},5:{h:'Consuming',s:"Couldn't sustain focus on other things, food dominated thinking"}},
-    libido:{0:{h:'Absent',s:'No signal whatsoever, not on my radar at all'},1:{h:'Low',s:'Present but weak, easily ignored, not interfering'},2:{h:'Present',s:'Registered, neither strong nor suppressed'},3:{h:'Strong',s:'Clearly present, difficult to ignore'},4:{h:'Dominant',s:'Significantly elevated, actively present throughout the day'}},
-    attention:{6:{h:'Sharp',s:'Exceptional clarity, retained everything, high output all day'},5:{h:'Focused',s:'Good cognitive function, tracking and retaining well'},4:{h:'Slightly above',s:'Marginally more alert or retentive than usual'},3:{h:'Unremarkable',s:'Normal cognitive function, nothing to note'},2:{h:'Minor lapses',s:'Small gaps in attention, self-correcting quickly'},1:{h:'Moderate fog',s:'Re-reading things, losing trains of thought, tasks harder than usual'},0:{h:'Severe fog',s:"Couldn't hold coherent thoughts, noticeable to others or required withdrawal"}},
-    reactivity:{6:{h:'Actively warm',s:'Patient, kind, sought to connect, easy to be around'},5:{h:'Mildly warm',s:'Slightly more open or patient than usual'},4:{h:'At ease',s:'Calm, no friction in interactions with others'},3:{h:'Unremarkable',s:'No notable reactivity in either direction'},2:{h:'Mildly reactive',s:"Small irritations registered, didn't act on them"},1:{h:'Snapped or lost control',s:'Reacted in a way I noticed or regret'},0:{h:'Shut down',s:"Couldn't interact, removed myself entirely"}},
-    moodTone:{6:{h:'Expansive',s:'Unusually open, high positive affect, actively good'},5:{h:'Uplifted',s:'Genuine pleasure, engagement, interest in things'},4:{h:'Light',s:'Emotionally open, present, no heaviness'},3:{h:'Flat',s:'Emotionally neutral, neither pulled up nor down'},2:{h:'Heavy',s:'Low-grade sadness present, still functional but effortful'},1:{h:'Empty',s:"Flat, no access to positive feeling, couldn't be moved by things"},0:{h:'Hopeless or could not function',s:"Sense things won't improve; or tasks felt insurmountable"}},
-    tension:{6:{h:'Settled',s:'Unusually quiet mind, deeply at ease'},5:{h:'Calm',s:'No notable mental noise, body relaxed'},4:{h:'Low hum',s:'Minor background tension, present but not disruptive'},3:{h:'Unremarkable',s:'No notable tension in either direction'},2:{h:'On edge',s:'Keyed up, background restlessness, harder to settle'},1:{h:'Racing thoughts',s:'Body tense, difficulty concentrating, hard to settle'},0:{h:'Overwhelmed or panic',s:"Couldn't contain anxious thoughts; or physical symptoms present"}},
-    cogTone:{6:{h:'Expansive',s:'Future feels wide open, thoughts felt effortless and constructive'},5:{h:'Optimistic',s:'Mild positive lean, things felt manageable and clear'},4:{h:'Slightly positive',s:'Fractionally clearer or more open than usual'},3:{h:'Balanced',s:'No distortion in either direction, thoughts felt proportionate'},2:{h:'Negative filter',s:'Slight pessimistic lean, minor distortion'},1:{h:'Catastrophising',s:'Specific things felt worse than they probably are, hard to correct'},0:{h:'Globally negative or no positive access',s:"World and future felt bleak; or couldn't find any positive frame"}},
-    functional:{5:{h:'Above expectations',s:'High output, felt capable and engaged beyond what the day required'},4:{h:'As expected',s:'Performed at normal capacity for the type of day'},3:{h:'Mildly below',s:'Slightly less output or engagement than the situation required'},2:{h:'Moderately impaired',s:'Got through obligations but it required significant effort'},1:{h:'Significantly impaired',s:'Had to mask or push through just to appear functional'},0:{h:'Could not meet obligations',s:'Had to withdraw, call in, or cancel entirely'}},
-    social:{4:{h:'Connected',s:'Actively sought out people, felt warm and present'},3:{h:'Normal',s:'Interactions happened, no notable positive or negative quality'},2:{h:'Withdrawn',s:'Present but less engaged than the situation called for'},1:{h:'Avoided',s:"Kept to myself, cancelled plans, deflected or didn't respond"},0:{h:'Conflict',s:'Had a difficult interaction; whether or not I caused it, my state was a factor'}},
+    cramping:{1:{h:'1 — Not at all',s:'No cramping'},2:{h:'2 — Mild',s:'Present; manageable without medication'},3:{h:'3 — Moderate',s:'Required pain relief or significantly affected comfort'},4:{h:'4 — Severe',s:'Debilitating; limited normal activity'}},
+    sleepQ:{1:{h:'1 — Restored',s:'Woke feeling genuinely rested and ready'},2:{h:'2 — Adequate',s:'Slept through; woke functional if not fully rested'},3:{h:'3 — Some waking or delay',s:'Functional but not restored; fell back asleep eventually'},4:{h:'4 — Woke multiple times',s:'Significant difficulty returning to sleep; rest was fragmented'},5:{h:'5 — Barely slept',s:'Less than a few hours; or in and out all night'},6:{h:'6 — Hours in bed, no recovery',s:'Felt worse than not sleeping; completely unrestorative'}},
+    energy:{1:{h:'1 — Not at all fatigued',s:'Body felt ready and capable; no resistance'},2:{h:'2 — Minimal',s:'Slight tiredness; still completed everything without effort'},3:{h:'3 — Mild fatigue',s:'Noticeable tiredness; tasks required slightly more effort'},4:{h:'4 — Moderate fatigue',s:'Required deliberate effort for ordinary tasks; dips in the day'},5:{h:'5 — Marked fatigue',s:'Very low energy; pushed through but it cost significantly'},6:{h:'6 — Extreme fatigue',s:"Couldn't sustain activity; wanted to cancel everything"}},
+    appetite:{1:{h:'1 — No hunger signal',s:'No awareness of appetite; food wasn\'t a factor at all'},2:{h:'2 — Faint or quiet',s:'Hunger barely registered; easy to ignore or overlook'},3:{h:'3 — Present, unremarkable',s:'Hunger came and went normally; nothing pulled my attention'},4:{h:'4 — Clearly noticeable',s:'Appetite in my awareness; starting to affect food decisions'},5:{h:'5 — Strong and persistent',s:'Hard to set aside; kept returning; required active effort to navigate'},6:{h:'6 — Consuming or completely absent',s:'Couldn\'t satisfy hunger regardless of intake; or no signal at all'}},
+    eatingBeh:{1:{h:'1 — Hunger only',s:'Ate in response to hunger signals; nothing to note'},2:{h:'2 — Mindful excess',s:'Ate beyond hunger as a conscious choice; remained in control'},3:{h:'3 — Emotional eating',s:'Used food to manage an emotional state; aware of it while doing it'},4:{h:'4 — Loss of control',s:'Urge to eat beyond satiation; partially or fully acted on'}},
+    bloating:{1:{h:'1 — Not at all',s:'Abdomen flat and comfortable; no awareness'},2:{h:'2 — Mild',s:'Noticeable after eating; not uncomfortable'},3:{h:'3 — Moderate',s:'Clothes feel tight; aware of it throughout the day'},4:{h:'4 — Severe',s:'Distended and physically distressing; affected movement or posture'}},
+    foodNoise:{1:{h:'1 — Not at all',s:"Food didn't cross my mind between meals"},2:{h:'2 — Minimal',s:'One or two fleeting thoughts; no effort to dismiss'},3:{h:'3 — Mild',s:'Food surfaced periodically between meals; easily dismissed'},4:{h:'4 — Moderate',s:'Persistent thoughts; mild but ongoing distraction'},5:{h:'5 — Marked',s:'Intrusive; food preoccupation interfered with concentration'},6:{h:'6 — Extreme',s:"Consuming; couldn't sustain focus; food dominated thinking"}},
+    libido:{1:{h:'1 — Completely absent',s:'No awareness; no pull, no signal whatsoever'},2:{h:'2 — Faint or suppressed',s:'Barely registered; noticeably less than usual'},3:{h:'3 — Quiet but present',s:'There in the background; not demanding attention'},4:{h:'4 — Clearly present',s:'Noticeable; in my awareness but manageable'},5:{h:'5 — Strong or elevated',s:'Prominent; hard to set aside; somewhat preoccupying'},6:{h:'6 — Consuming or overwhelming',s:'Dominant experience; couldn\'t redirect; or so absent it felt like a loss'}},
+    sexActivity:{1:{h:'1 — None',s:'No sexual activity'},2:{h:'2 — Yes — responsive',s:'Participated but did not initiate'},3:{h:'3 — Yes — initiated',s:'Sought it out'}},
+    attention:{1:{h:'1 — Sharp; no difficulty',s:'Exceptional clarity; retained everything; high output'},2:{h:'2 — Minor lapses only',s:'Small gaps; self-correcting quickly; no real impact'},3:{h:'3 — Noticeable difficulty',s:'Re-reading things; losing trains of thought; tasks took more effort'},4:{h:'4 — Significant fog',s:'Hard to track or retain; required deliberate effort to follow conversations or tasks'},5:{h:"5 — Couldn't hold a thought",s:"Couldn't complete coherent sequences; kept losing the thread"},6:{h:'6 — Severe; noticeable to others',s:'Had to withdraw or stop; impairment was visible or required accommodation'}},
+    reactivity:{1:{h:'1 — Calm and patient',s:'No friction; easy to be around; nothing snagged'},2:{h:"2 — Noticed irritations",s:"Small things caught my attention; didn't act on any of them"},3:{h:'3 — More reactive than usual',s:'Had to work to stay measured; managed but it required effort'},4:{h:'4 — Clearly irritable',s:'Short with people; hard to be around; friction was obvious'},5:{h:'5 — Snapped or lost control',s:"Reacted in a way I noticed or regret; couldn't fully contain it"},6:{h:"6 — Couldn't be around people",s:'Had to remove myself entirely; interaction wasn\'t possible'}},
+    moodTone:{1:{h:'Ecstatic',s:'Euphoric or elated; an intensity that stands out even on a good day'},2:{h:'Open and happy',s:'Genuinely good; light, warm, easy to be in'},3:{h:'Neutral',s:'Nothing weighing on me; neither up nor down'},4:{h:'Low-grade sadness',s:'Named feeling; there, but moved through the day normally'},5:{h:'Heavy',s:'Effort to engage; tasks cost more than they should'},6:{h:'Hopeless or completely empty',s:"Sense it won't lift; or no feeling at all — the wall"}},
+    tension:{1:{h:'1 — Quiet and at ease',s:'Mind settled; no anxiety, no tension, nothing pulling'},2:{h:'2 — Background hum',s:'Faint tension present; not disruptive; easily set aside'},3:{h:'3 — On edge',s:"Keyed up; harder to settle than usual; couldn't fully relax"},4:{h:'4 — Racing thoughts',s:"Body tense; mind wouldn't quiet; difficulty concentrating"},5:{h:'5 — Significant anxiety',s:'Very hard to settle; preoccupied; thoughts kept returning'},6:{h:'6 — Overwhelmed or panic',s:"Couldn't contain it; physical symptoms present; had to stop"}},
+    cogTone:{1:{h:'1 — No negative thoughts',s:'Thoughts felt clear and proportionate about myself and my situation'},2:{h:'2 — Fleeting self-criticism',s:'Minor negative thoughts; corrected quickly'},3:{h:'3 — Recurring self-doubt',s:'Returned repeatedly; harder to dismiss; some hopelessness or self-blame'},4:{h:'4 — Persistent hopelessness',s:'Strong sense things won\'t improve; self-critical thoughts dominated'},5:{h:'5 — Marked',s:'Pervasive negative self-evaluation; couldn\'t find any corrective thought'},6:{h:'6 — Extreme',s:'Completely hopeless; felt worthless or that situation was permanent'}},
+    functional:{1:{h:'1 — Full capacity',s:'Performed at or above what was needed; no interference'},2:{h:'2 — Slight reduction',s:"Marginally less than usual; didn't require real effort to compensate"},3:{h:'3 — Noticeably below capacity',s:'Fell short of what the situation called for; I noticed it'},4:{h:'4 — Got through it, but it cost',s:'Met obligations but required significantly more effort than it should have'},5:{h:'5 — Masking or pushing through',s:'Had to perform functioning; the gap between what I showed and felt was large'},6:{h:"6 — Couldn't meet obligations",s:'Had to withdraw, call in, or cancel; the day wasn\'t survivable as planned'}},
+    social:{1:{h:'1 — Engaged normally',s:'Warm or at ease; no avoidance; showed up without friction'},2:{h:'2 — Slightly withdrawn',s:'Present but a little quieter or less engaged than usual'},3:{h:'3 — Noticeably withdrawn',s:'Less engaged than the situation called for; others may have noticed'},4:{h:'4 — Avoided or cancelled',s:'Kept to myself; deflected or skipped interactions I would normally have'},5:{h:'5 — Significantly withdrew',s:"Isolated; couldn't sustain interaction; removed myself"},6:{h:'6 — Conflict or complete withdrawal',s:'Had a difficult interaction; or completely removed myself; state was clearly a factor'}},
   };
 
-  const MIDS={reactivity:3,tension:3,moodTone:3,attention:3,energy:3,cogTone:3,appetite:3,sleepQ:4,functional:4,social:3,libido:2};
+  const MIDS={reactivity:3,tension:3,moodTone:3,attention:3,energy:3,cogTone:3,appetite:3,sleepQ:3,functional:3,social:3,libido:3};
   const sel=(field,val,labelFallback,subFallback)=>{
     const vStr=typeof val==='string'?`'${val}'`:val;
     const isSelected=(retroFD[field]===val)||false;
@@ -1119,6 +1146,7 @@ function buildRetroForm(cd,pi,e){
   const headOpen=retroFD.headache>0;
   const acneOpen=retroFD.acne>0;
   const bloopOpen=['light','medium','heavy'].includes(retroFD.bleeding||'');
+  const crampOpen=retroFD.cramping>1||false;
 
   return`
   <div class="st" style="margin-top:4px;display:flex;align-items:center;gap:6px;font-size:15px;color:var(--text);">📅 Day type</div>
@@ -1136,41 +1164,39 @@ function buildRetroForm(cd,pi,e){
       <div>${sel('clots','none','None')}${sel('clots','small','Small clots','Smaller than a 50 cent coin')}${sel('clots','large','Large clots','Larger than a 50 cent coin')}</div>
       <div class="divider"></div>
       <div class="cgl">Menstrual cramping</div>
-      <div>${sel('cramping',0,'None')}${sel('cramping',1,'Mild')}${sel('cramping',2,'Moderate')}${sel('cramping',3,'Severe')}</div>
+      <div>${sel('cramping',1,'1 — Not at all')}${sel('cramping',2,'2 — Mild')}${sel('cramping',3,'3 — Moderate')}${sel('cramping',4,'4 — Severe')}</div>
     </div>
   </div>
   <div class="st">Sleep</div>
   <div class="card" style="--cat:#5e5ce6;--cat-rgb:94,92,230;margin-bottom:10px;">
     <div class="cgl">Sleep quality</div>
-    ${sel('sleepQ',6,'Could have kept sleeping for hours')}${sel('sleepQ',5,'Restored')}${sel('sleepQ',4,'Adequate')}${sel('sleepQ',3,'Fragmented')}${sel('sleepQ',2,'Poor')}${sel('sleepQ',1,'Barely slept')}${sel('sleepQ',0,'Unrested despite sleeping')}
+    ${sel('sleepQ',1,'1 — Restored')}${sel('sleepQ',2,'2 — Adequate')}${sel('sleepQ',3,'3 — Some waking or delay')}${sel('sleepQ',4,'4 — Woke multiple times')}${sel('sleepQ',5,'5 — Barely slept')}${sel('sleepQ',6,'6 — Hours in bed, no recovery')}
     <div class="divider"></div>
     <div class="cgl">Hours slept</div>
     <div class="toggle-row">${chip('sleepHrs','<4','<4')}${chip('sleepHrs','4-5','4–5')}${chip('sleepHrs','5-6','5–6')}${chip('sleepHrs','6-7','6–7')}${chip('sleepHrs','7-8','7–8')}${chip('sleepHrs','8-9','8–9')}${chip('sleepHrs','>9','9+')}</div>
     <div class="cgl">Time to fall asleep</div>
     <div class="toggle-row">${chip('sleepLatency','<10','<10 min')}${chip('sleepLatency','10-20','10–20')}${chip('sleepLatency','20-40','20–40')}${chip('sleepLatency','>40','>40 min')}${chip('sleepLatency','couldnt','Couldn\'t')}</div>
-    <div class="divider"></div>
-    <div class="cgl">Early morning waking</div>
-    ${msel('sleepFlags','early-waking','Woke 2–4am — anxiety or racing thoughts, couldn\'t return to sleep')}
+    ${msel('sleepFlags','early-waking','Woke 2–4am — couldn\'t return to sleep easily')}
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#30d158;">🔋 Physical drive</div>
   <div class="card" style="--cat:#30d158;--cat-rgb:48,209,88;" style="margin-bottom:10px;">
-    ${sel('energy',6,'High drive')}${sel('energy',5,'Good')}${sel('energy',4,'Slightly above')}${sel('energy',3,'Normal')}${sel('energy',2,'Mild drag')}${sel('energy',1,'Fatigued')}${sel('energy',0,'Exhausted or depleted')}
+    ${sel('energy',1,'1 — Not at all fatigued')}${sel('energy',2,'2 — Minimal')}${sel('energy',3,'3 — Mild fatigue')}${sel('energy',4,'4 — Moderate fatigue')}${sel('energy',5,'5 — Marked fatigue')}${sel('energy',6,'6 — Extreme fatigue')}
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#ef3d57;">🍎 Hunger and appetite</div>
   <div class="card" style="--cat:#ef3d57;--cat-rgb:239,61,87;" style="margin-bottom:10px;">
     <div class="cgl">Appetite</div>
-    <div>${sel('appetite',0,'Absent')}${sel('appetite',1,'Suppressed')}${sel('appetite',2,'Slightly suppressed')}${sel('appetite',3,'Unremarkable')}${sel('appetite',4,'Slightly elevated')}${sel('appetite',5,'Elevated')}${sel('appetite',6,'Insatiable')}</div>
+    <div>${sel('appetite',1,'1 — No hunger signal')}${sel('appetite',2,'2 — Faint or quiet')}${sel('appetite',3,'3 — Present, unremarkable')}${sel('appetite',4,'4 — Clearly noticeable')}${sel('appetite',5,'5 — Strong and persistent')}${sel('appetite',6,'6 — Consuming or completely absent')}</div>
     <div class="divider"></div>
     <div class="cgl">Eating behaviour</div>
-    <div>${sel('eatingBeh',0,'Hunger only')}${sel('eatingBeh',1,'Mindful excess')}${sel('eatingBeh',2,'Emotional eating')}${sel('eatingBeh',3,'Loss of control')}</div>
+    <div>${sel('eatingBeh',1,'1 — Hunger only')}${sel('eatingBeh',2,'2 — Mindful excess')}${sel('eatingBeh',3,'3 — Emotional eating')}${sel('eatingBeh',4,'4 — Loss of control')}</div>
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#fe8814;">💥 Food noise</div>
   <div class="card" style="--cat:#fe8814;--cat-rgb:254,136,20;" style="margin-bottom:10px;">
-    ${sel('foodNoise',0,'None')}${sel('foodNoise',1,'Minimal')}${sel('foodNoise',2,'Present')}${sel('foodNoise',3,'Persistent')}${sel('foodNoise',4,'Intrusive')}${sel('foodNoise',5,'Consuming')}
+    ${sel('foodNoise',1,'1 — Not at all')}${sel('foodNoise',2,'2 — Minimal')}${sel('foodNoise',3,'3 — Mild')}${sel('foodNoise',4,'4 — Moderate')}${sel('foodNoise',5,'5 — Marked')}${sel('foodNoise',6,'6 — Extreme')}
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#64d2ff;">💨 Bloating</div>
   <div class="card" style="--cat:#64d2ff;--cat-rgb:100,210,255;" style="margin-bottom:10px;">
-    ${sel('bloating',0,'None')}${sel('bloating',1,'Mild fullness')}${sel('bloating',2,'Uncomfortable')}${sel('bloating',3,'Painful')}
+    ${sel('bloating',1,'1 — Not at all')}${sel('bloating',2,'2 — Mild')}${sel('bloating',3,'3 — Moderate')}${sel('bloating',4,'4 — Severe')}
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#c99269;">💩 Bowel</div>
   <div class="card" style="--cat:#c99269;--cat-rgb:201,146,105;" style="margin-bottom:10px;">
@@ -1202,21 +1228,28 @@ function buildRetroForm(cd,pi,e){
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#f84c4b;">🫯 Physical pain</div>
   <div class="card" style="--cat:#f84c4b;--cat-rgb:248,76,75;" style="margin-bottom:10px;">
-    <label class="check-option${retroFD.pain===0?' selected':''}" onclick="rSel(this,'pain',0);rShow('r-pain-loc',false)"><div class="check-box"></div><div class="check-text">None<small>Physically comfortable, no awareness of pain</small></div></label>
-    <label class="check-option${retroFD.pain===1?' selected':''}" onclick="rSel(this,'pain',1);rShow('r-pain-loc',true)"><div class="check-box"></div><div class="check-text">Mild<small>Present and noticed, didn't interfere with function</small></div></label>
-    <label class="check-option${retroFD.pain===2?' selected':''}" onclick="rSel(this,'pain',2);rShow('r-pain-loc',true)"><div class="check-box"></div><div class="check-text">Moderate<small>Interfered with comfort or normal movement</small></div></label>
-    <label class="check-option${retroFD.pain===3?' selected':''}" onclick="rSel(this,'pain',3);rShow('r-pain-loc',true)"><div class="check-box"></div><div class="check-text">Severe<small>Couldn't ignore, altered behaviour or movement</small></div></label>
+    <label class="check-option${retroFD.pain===1?' selected':''}" onclick="rSel(this,'pain',1);rShow('r-pain-loc',false)"><div class="check-box"></div><div class="check-text">No pain<small>Physically comfortable; no awareness of pain</small></div></label>
+    <label class="check-option${retroFD.pain===2?' selected':''}" onclick="rSel(this,'pain',2);rShow('r-pain-loc',true)"><div class="check-box"></div><div class="check-text">Present and noticed<small>There, but didn't interfere with function</small></div></label>
+    <label class="check-option${retroFD.pain===3?' selected':''}" onclick="rSel(this,'pain',3);rShow('r-pain-loc',true)"><div class="check-box"></div><div class="check-text">Interfered with comfort<small>Affected normal movement or how I held myself</small></div></label>
+    <label class="check-option${retroFD.pain===4?' selected':''}" onclick="rSel(this,'pain',4);rShow('r-pain-loc',true)"><div class="check-box"></div><div class="check-text">Couldn't ignore<small>Altered behaviour, movement, or required management</small></div></label>
     <div class="collapsible${painOpen?' open':''}" id="r-pain-loc">
       <div class="divider"></div><div class="cgl">Location</div>
       ${msel('painLoc','breast','Breast / chest')}${msel('painLoc','pelvic','Lower abdomen / pelvic')}${msel('painLoc','back','Lower back')}${msel('painLoc','joints','Joints')}${msel('painLoc','muscles','Muscles')}${msel('painLoc','head','Head')}${msel('painLoc','other','Other')}
     </div>
   </div>
+  <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#ff9f0a;">🤢 Nausea</div>
+  <div class="card" style="--cat:#ff9f0a;--cat-rgb:255,159,10;" style="margin-bottom:10px;">
+    <label class="check-option${retroFD.nausea===1?' selected':''}" onclick="rSel(this,'nausea',1)"><div class="check-box"></div><div class="check-text">No nausea<small>No awareness; completely absent</small></div></label>
+    <label class="check-option${retroFD.nausea===2?' selected':''}" onclick="rSel(this,'nausea',2)"><div class="check-box"></div><div class="check-text">Present and noticeable<small>There, but passed on its own; didn't affect eating or activity</small></div></label>
+    <label class="check-option mid${retroFD.nausea===3?' selected':''}" onclick="rSel(this,'nausea',3)"><div class="check-box"></div><div class="check-text">Persistent feeling<small>Affected eating or made it hard to ignore; no vomiting</small></div></label>
+    <label class="check-option${retroFD.nausea===4?' selected':''}" onclick="rSel(this,'nausea',4)"><div class="check-box"></div><div class="check-text">Vomited<small>Or so severe it stopped normal activity</small></div></label>
+  </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#f7f74d;">🔨 Headache</div>
   <div class="card" style="--cat:#f7f74d;--cat-rgb:247,247,77;" style="margin-bottom:10px;">
-    <label class="check-option${retroFD.headache===0?' selected':''}" onclick="rSel(this,'headache',0);rShow('r-head-type',false)"><div class="check-box"></div><div class="check-text">None</div></label>
-    <label class="check-option${retroFD.headache===1?' selected':''}" onclick="rSel(this,'headache',1);rShow('r-head-type',true)"><div class="check-box"></div><div class="check-text">Mild<small>Present, didn't need to change anything</small></div></label>
-    <label class="check-option${retroFD.headache===2?' selected':''}" onclick="rSel(this,'headache',2);rShow('r-head-type',true)"><div class="check-box"></div><div class="check-text">Moderate<small>Affected concentration or activity level</small></div></label>
-    <label class="check-option${retroFD.headache===3?' selected':''}" onclick="rSel(this,'headache',3);rShow('r-head-type',true)"><div class="check-box"></div><div class="check-text">Severe<small>Required medication or rest, couldn't push through</small></div></label>
+    <label class="check-option${retroFD.headache===1?' selected':''}" onclick="rSel(this,'headache',1);rShow('r-head-type',false)"><div class="check-box"></div><div class="check-text">No headache<small>Completely absent; no awareness</small></div></label>
+    <label class="check-option${retroFD.headache===2?' selected':''}" onclick="rSel(this,'headache',2);rShow('r-head-type',true)"><div class="check-box"></div><div class="check-text">Present and noticed<small>There, but didn't need to change anything</small></div></label>
+    <label class="check-option${retroFD.headache===3?' selected':''}" onclick="rSel(this,'headache',3);rShow('r-head-type',true)"><div class="check-box"></div><div class="check-text">Affected concentration<small>Had to slow down or adjust activity</small></div></label>
+    <label class="check-option${retroFD.headache===4?' selected':''}" onclick="rSel(this,'headache',4);rShow('r-head-type',true)"><div class="check-box"></div><div class="check-text">Required medication or rest<small>Couldn't push through without intervention</small></div></label>
     <div class="collapsible${headOpen?' open':''}" id="r-head-type">
       <div class="divider"></div><div class="cgl">Type</div>
       ${sel('headacheType','tension','Tension','Pressure, both sides, no other symptoms')}${sel('headacheType','migraine-no-aura','Migraine without aura','Throbbing, one side, light or sound sensitivity')}${sel('headacheType','migraine-aura','Migraine with aura','Visual disturbance, numbness, or speech changes before or during')}${sel('headacheType','hormonal','Hormonal','Cyclical, around period or ovulation')}${sel('headacheType','hangover','Hangover','Alcohol-related — note as confounder for today\'s mood and energy data')}${sel('headacheType','unclear','Unclear')}
@@ -1224,10 +1257,10 @@ function buildRetroForm(cd,pi,e){
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#f26c60;">🌸 Skin</div>
   <div class="card" style="--cat:#f26c60;--cat-rgb:242,108,96;" style="margin-bottom:10px;">
-    <label class="check-option${retroFD.acne===0?' selected':''}" onclick="rSel(this,'acne',0);rShow('r-acne-loc',false)"><div class="check-box"></div><div class="check-text">Clear<small>No active breakouts</small></div></label>
-    <label class="check-option${retroFD.acne===1?' selected':''}" onclick="rSel(this,'acne',1);rShow('r-acne-loc',true)"><div class="check-box"></div><div class="check-text">1–2 spots, not inflamed<small>Present but flat, not tender</small></div></label>
-    <label class="check-option${retroFD.acne===2?' selected':''}" onclick="rSel(this,'acne',2);rShow('r-acne-loc',true)"><div class="check-box"></div><div class="check-text">Several spots, some inflamed<small>More than 2, at least one raised or red</small></div></label>
-    <label class="check-option${retroFD.acne===3?' selected':''}" onclick="rSel(this,'acne',3);rShow('r-acne-loc',true)"><div class="check-box"></div><div class="check-text">Multiple inflamed or cystic<small>Several active, some deep or painful</small></div></label>
+    <label class="check-option${retroFD.acne===1?' selected':''}" onclick="rSel(this,'acne',1);rShow('r-acne-loc',false)"><div class="check-box"></div><div class="check-text">Clear<small>No active breakouts</small></div></label>
+    <label class="check-option${retroFD.acne===2?' selected':''}" onclick="rSel(this,'acne',2);rShow('r-acne-loc',true)"><div class="check-box"></div><div class="check-text">Mild<small>1–2 spots; not inflamed; present but flat and not tender</small></div></label>
+    <label class="check-option${retroFD.acne===3?' selected':''}" onclick="rSel(this,'acne',3);rShow('r-acne-loc',true)"><div class="check-box"></div><div class="check-text">Moderate<small>Several spots; some inflamed; at least one raised or red</small></div></label>
+    <label class="check-option${retroFD.acne===4?' selected':''}" onclick="rSel(this,'acne',4);rShow('r-acne-loc',true)"><div class="check-box"></div><div class="check-text">Severe<small>Multiple inflamed or cystic; several active; some deep or painful</small></div></label>
     <div class="collapsible${acneOpen?' open':''}" id="r-acne-loc">
       <div class="divider"></div><div class="cgl">Location</div>
       ${msel('acneLoc','jaw','Jaw / chin / lower face')}${msel('acneLoc','cheeks','Cheeks')}${msel('acneLoc','tzone','Forehead / T-zone')}${msel('acneLoc','chest-back','Chest or back')}${msel('acneLoc','cystic','Cystic / under skin')}
@@ -1235,39 +1268,45 @@ function buildRetroForm(cd,pi,e){
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#fc288e;">💗 Libido</div>
   <div class="card" style="--cat:#fc288e;--cat-rgb:252,40,142;" style="margin-bottom:10px;">
-    ${sel('libido',0,'Absent')}${sel('libido',1,'Low')}${sel('libido',2,'Present')}${sel('libido',3,'Strong')}${sel('libido',4,'Dominant')}
+    ${sel('libido',1,'1 — Completely absent')}${sel('libido',2,'2 — Faint or suppressed')}${sel('libido',3,'3 — Quiet but present')}${sel('libido',4,'4 — Clearly present')}${sel('libido',5,'5 — Strong or elevated')}${sel('libido',6,'6 — Consuming or overwhelming')}
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:var(--blue);">💎 Cognitive clarity</div>
   <div class="card" style="--cat:#0a84ff;--cat-rgb:10,132,255;" style="margin-bottom:10px;">
-    ${sel('attention',6,'Sharp')}${sel('attention',5,'Focused')}${sel('attention',4,'Slightly above')}${sel('attention',3,'Unremarkable')}${sel('attention',2,'Minor lapses')}${sel('attention',1,'Moderate fog')}${sel('attention',0,'Severe fog')}
+    ${sel('attention',1,'1 — Sharp; no difficulty')}${sel('attention',2,'2 — Minor lapses only')}${sel('attention',3,'3 — Noticeable difficulty')}${sel('attention',4,'4 — Significant fog')}${sel('attention',5,"5 — Couldn't hold a thought")}${sel('attention',6,'6 — Severe; noticeable to others')}
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#fc4159;">🎢 Emotional reactivity</div>
   <div class="card" style="--cat:#fc4159;--cat-rgb:252,65,89;" style="margin-bottom:10px;">
-    ${sel('reactivity',6,'Actively warm')}${sel('reactivity',5,'Mildly warm')}${sel('reactivity',4,'At ease')}${sel('reactivity',3,'Unremarkable')}${sel('reactivity',2,'Mildly reactive')}${sel('reactivity',1,'Snapped or lost control')}${sel('reactivity',0,'Shut down')}
+    ${sel('reactivity',1,'1 — Calm and patient')}${sel('reactivity',2,'2 — Noticed irritations')}${sel('reactivity',3,'3 — More reactive than usual')}${sel('reactivity',4,'4 — Clearly irritable')}${sel('reactivity',5,'5 — Snapped or lost control')}${sel('reactivity',6,"6 — Couldn't be around people")}
+  </div>
+  <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#fc288e;">🌸 Sexual activity</div>
+  <div class="card" style="--cat:#fc288e;--cat-rgb:252,40,142;">
+    <label class="check-option" onclick="sel(this,'sexActivity',1)"><div class="check-box"></div><div class="check-text">None</div></label>
+    <label class="check-option mid" onclick="sel(this,'sexActivity',2)"><div class="check-box"></div><div class="check-text">Yes — responsive<small>Participated but didn't initiate</small></div></label>
+    <label class="check-option" onclick="sel(this,'sexActivity',3)"><div class="check-box"></div><div class="check-text">Yes — initiated<small>Sought it out</small></div></label>
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:var(--purple);">🔮 Mood tone</div>
   <div class="card" style="--cat:#bf5af2;--cat-rgb:191,90,242;" style="margin-bottom:10px;">
-    ${sel('moodTone',6,'Expansive')}${sel('moodTone',5,'Uplifted')}${sel('moodTone',4,'Light')}${sel('moodTone',3,'Flat')}${sel('moodTone',2,'Heavy')}${sel('moodTone',1,'Empty')}${sel('moodTone',0,'Hopeless or could not function')}
+    ${sel('moodTone',1,'Ecstatic')}${sel('moodTone',2,'Open and happy')}${sel('moodTone',3,'Neutral')}${sel('moodTone',4,'Low-grade sadness')}${sel('moodTone',5,'Heavy')}${sel('moodTone',6,'Hopeless or completely empty')}
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#f186ca;">🧠 Mental tension</div>
   <div class="card" style="--cat:#f186ca;--cat-rgb:241,134,202;" style="margin-bottom:10px;">
-    ${sel('tension',6,'Settled')}${sel('tension',5,'Calm')}${sel('tension',4,'Low hum')}${sel('tension',3,'Unremarkable')}${sel('tension',2,'On edge')}${sel('tension',1,'Racing thoughts')}${sel('tension',0,'Overwhelmed or panic')}
+    ${sel('tension',1,'1 — Quiet and at ease')}${sel('tension',2,'2 — Background hum')}${sel('tension',3,'3 — On edge')}${sel('tension',4,'4 — Racing thoughts')}${sel('tension',5,'5 — Significant anxiety')}${sel('tension',6,'6 — Overwhelmed or panic')}
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#41bcb7;">🫧 Cognitive tone</div>
   <div class="card" style="--cat:#41bcb7;--cat-rgb:65,188,183;" style="margin-bottom:10px;">
-    ${sel('cogTone',6,'Expansive')}${sel('cogTone',5,'Optimistic')}${sel('cogTone',4,'Slightly positive')}${sel('cogTone',3,'Balanced')}${sel('cogTone',2,'Negative filter')}${sel('cogTone',1,'Catastrophising')}${sel('cogTone',0,'Globally negative or no positive access')}
+    ${sel('cogTone',1,'1 — No negative thoughts')}${sel('cogTone',2,'2 — Fleeting self-criticism')}${sel('cogTone',3,'3 — Recurring self-doubt')}${sel('cogTone',4,'4 — Persistent hopelessness')}${sel('cogTone',5,'5 — Marked')}${sel('cogTone',6,'6 — Extreme')}
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#3dbcb8;">🛸 Functional capacity</div>
   <div class="card" style="--cat:#3dbcb8;--cat-rgb:61,188,184;" style="margin-bottom:10px;">
-    ${sel('functional',5,'Above expectations')}${sel('functional',4,'As expected')}${sel('functional',3,'Mildly below')}${sel('functional',2,'Moderately impaired')}${sel('functional',1,'Significantly impaired')}${sel('functional',0,'Could not meet obligations')}
+    ${sel('functional',1,'1 — Full capacity')}${sel('functional',2,'2 — Slight reduction')}${sel('functional',3,'3 — Noticeably below capacity')}${sel('functional',4,'4 — Got through it, but it cost')}${sel('functional',5,'5 — Masking or pushing through')}${sel('functional',6,"6 — Couldn't meet obligations")}
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#b9ee35;">☘️ Social engagement</div>
   <div class="card" style="--cat:#b9ee35;--cat-rgb:185,238,53;" style="margin-bottom:10px;">
     <div>
-      ${sel('social',4,'Connected')}${sel('social',3,'Normal')}${sel('social',2,'Withdrawn')}${sel('social',1,'Avoided')}${sel('social',0,'Conflict')}
+      ${sel('social',1,'1 — Engaged normally')}${sel('social',2,'2 — Slightly withdrawn')}${sel('social',3,'3 — Noticeably withdrawn')}${sel('social',4,'4 — Avoided or cancelled')}${sel('social',5,'5 — Significantly withdrew')}${sel('social',6,'6 — Conflict or complete withdrawal')}
     </div>
     <div class="divider"></div>
-    <label class="check-option" style="--cat:#636366;" onclick="rSocialNA(this)"><div class="check-box" style="border-color:rgba(174,174,178,.6);"></div><div class="check-text" style="color:rgba(235,235,245,.45);">Not applicable<small style="color:rgba(235,235,245,.3);">No social interactions today</small></div></label>
+    <label class="check-option" style="--cat:#636366;" onclick="rSocialNA(this)"><div class="check-text" style="color:rgba(235,235,245,.45);">Not applicable<small style="color:rgba(235,235,245,.3);">No social interactions today</small></div></label>
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#87ceeb;">🗺️ Context</div>
   <div class="card" style="--cat:#1c6b8a;--cat-rgb:28,107,138;" style="margin-bottom:10px;">
@@ -1378,6 +1417,23 @@ function saveRetroLog(){
   const logs=getLogs().filter(l=>l.date!==retroDate);
   logs.unshift(entry);logs.sort((a,b)=>b.date.localeCompare(a.date));
   saveLogs(logs);
+  // If retro entry has bleeding, check whether it should reset the cycle counter
+  if(['light','medium','heavy'].includes(entry.bleeding)){
+    const s2=getSettings();
+    const lastP=new Date(s2.lastPeriod+'T00:00:00');
+    const entryD=new Date(retroDate+'T00:00:00');
+    const daysSince=Math.floor((entryD-lastP)/86400000);
+    if(daysSince>=10){
+      // This retro entry marks a new period start — update lastPeriod
+      const history2=Array.isArray(s2.cycleHistory)?s2.cycleHistory:[];
+      history2.push({start:s2.lastPeriod,length:daysSince});
+      if(history2.length>6)history2.shift();
+      const avg=Math.round(history2.reduce((a,b)=>a+b.length,0)/history2.length);
+      const clamped=Math.max(21,Math.min(45,avg));
+      s2.lastPeriod=retroDate;s2.cycleLength=clamped;s2.cycleHistory=history2;
+      localStorage.setItem('cycleSet_v4',JSON.stringify(s2));
+    }
+  }
   document.getElementById('retro-modal').classList.remove('open');
   showToast(editingExisting?'✓ Entry updated':'✓ Entry saved');
   retroDate=null;retroFD={};retroMS={};retroFS={};editingExisting=false;
@@ -1486,7 +1542,7 @@ function showDetail(dateKey){
     const display=(v===null||v===undefined||v==='')?'<span style="color:var(--text3);font-style:italic;">—</span>':String(v);
     return`<div class="modal-row"><span class="modal-key">${k}</span><span class="modal-val">${display}</span></div>`;
   };
-  const LARRS={reactivity:REACTIVITY_L,moodTone:MOOD_L,tension:TENSION_L,energy:ENERGY_L,attention:ATTENTION_L,cogTone:COGTONE_L,sleepQ:SLEEPQ_L,functional:FUNCTIONAL_L,social:SOCIAL_L,libido:LIBIDO_L,appetite:APPETITE_L,eatingBeh:EATINGBEH_L,bloating:BLOATING_L,foodNoise:FOODNOISE_L,pain:PAIN_L,headache:HEADACHE_L,acne:ACNE_L,cramping:CRAMPING_L};
+  const LARRS={reactivity:REACTIVITY_L,moodTone:MOOD_L,tension:TENSION_L,energy:ENERGY_L,attention:ATTENTION_L,cogTone:COGTONE_L,sleepQ:SLEEPQ_L,functional:FUNCTIONAL_L,social:SOCIAL_L,libido:LIBIDO_L,appetite:APPETITE_L,eatingBeh:EATINGBEH_L,bloating:BLOATING_L,foodNoise:FOODNOISE_L,pain:PAIN_L,headache:HEADACHE_L,acne:ACNE_L,cramping:CRAMPING_L,nausea:NAUSEA_L,sexActivity:SEXACTIVITY_L};
   const drow=(k,field)=>{
     const v=l[field];if(v===undefined||v===null)return row(k,null);
     const arr=LARRS[field];const label=arr?sl(v,arr):String(v);
@@ -1648,7 +1704,7 @@ function exportPDF(fromDate,toDate){
     wrapped.forEach(wl=>{if(y>275){doc.addPage();y=15;}doc.text(wl,22,y);nl();});
   };
   const psec=t=>{doc.setFont('helvetica','bold');doc.setFontSize(7.5);doc.setTextColor(150,150,150);doc.text(t.toUpperCase(),22,y);nl();doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(60,60,60);};
-  const LARRS={reactivity:REACTIVITY_L,moodTone:MOOD_L,tension:TENSION_L,energy:ENERGY_L,attention:ATTENTION_L,cogTone:COGTONE_L,sleepQ:SLEEPQ_L,functional:FUNCTIONAL_L,social:SOCIAL_L,libido:LIBIDO_L,appetite:APPETITE_L,eatingBeh:EATINGBEH_L,bloating:BLOATING_L,foodNoise:FOODNOISE_L,pain:PAIN_L,headache:HEADACHE_L,acne:ACNE_L,cramping:CRAMPING_L};
+  const LARRS={reactivity:REACTIVITY_L,moodTone:MOOD_L,tension:TENSION_L,energy:ENERGY_L,attention:ATTENTION_L,cogTone:COGTONE_L,sleepQ:SLEEPQ_L,functional:FUNCTIONAL_L,social:SOCIAL_L,libido:LIBIDO_L,appetite:APPETITE_L,eatingBeh:EATINGBEH_L,bloating:BLOATING_L,foodNoise:FOODNOISE_L,pain:PAIN_L,headache:HEADACHE_L,acne:ACNE_L,cramping:CRAMPING_L,nausea:NAUSEA_L,sexActivity:SEXACTIVITY_L};
   const pfD=(label,val,field)=>{
     if(val===undefined||val===null)return;
     const arr=LARRS[field];const lbl=arr?sl(val,arr):String(val);
@@ -1720,6 +1776,10 @@ function exportPDF(fromDate,toDate){
     pfD('Libido',l.libido,'libido');
     psec('Cognition');pfD('Attention / focus',l.attention,'attention');pfD('Cognitive tone',l.cogTone,'cogTone');
     psec('Emotional');pfD('Reactivity',l.reactivity,'reactivity');pfD('Mood tone',l.moodTone,'moodTone');pfD('Mental tension',l.tension,'tension');
+    if(l.tensionFlags&&l.tensionFlags.length){
+      const TF_LABELS={'heart':'Racing/pounding heart','chest':'Chest tightness or difficulty breathing','shaking':'Trembling or shaking','nausea':'Nausea or stomach distress','flush':'Hot flush or flushing'};
+      pf('Physical anxiety symptoms',l.tensionFlags.map(f=>TF_LABELS[f]||f).join(', '));
+    }
     psec('Function / Social');pfD('Functional capacity',l.functional,'functional');
     const snaP=l.socialFlags&&l.socialFlags.includes('na');
     if(snaP)pf('Social','Not applicable — no interactions today');else pfD('Social',l.social,'social');
