@@ -1253,7 +1253,7 @@ function buildRetroForm(cd,pi,e){
     <label class="check-option${retroFD.acne===4?' selected':''}" onclick="rSel(this,'acne',4);rShow('r-acne-loc',true)"><div class="check-box"></div><div class="check-text">Severe<small>Multiple inflamed or cystic; several active; some deep or painful</small></div></label>
     <div class="collapsible${acneOpen?' open':''}" id="r-acne-loc">
       <div class="divider"></div><div class="cgl">Location</div>
-      ${msel('acneLoc','jaw','Jaw / chin / lower face')}${msel('acneLoc','cheeks','Cheeks')}${msel('acneLoc','tzone','Forehead / T-zone')}${msel('acneLoc','chest-back','Chest or back')}${msel('acneLoc','cystic','Cystic / under skin')}
+      ${msel('acneLoc','jaw','Jaw / chin / lower face')}${msel('acneLoc','cheeks','Cheeks')}${msel('acneLoc','tzone','Forehead / nose / T-zone')}${msel('acneLoc','chest-back','Chest or back')}${msel('acneLoc','cystic','Cystic / under the skin')}
     </div>
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#fc288e;">💗 Libido</div>
@@ -1296,7 +1296,7 @@ function buildRetroForm(cd,pi,e){
       ${sel('social',1,'Sought connection')}${sel('social',2,'Engaged warmly')}${sel('social',3,'Present but quieter')}${sel('social',4,'Noticeably withdrawn')}${sel('social',5,'Avoided or cancelled')}${sel('social',6,'Isolated or conflict')}
     </div>
     <div class="divider"></div>
-    <label class="check-option" style="--cat:#636366;" onclick="rSocialNA(this)"><div class="check-text" style="color:rgba(235,235,245,.45);">Not applicable<small style="color:rgba(235,235,245,.3);">No social interactions today</small></div></label>
+    <label class="check-option" style="--cat:#636366;" onclick="rSocialNA(this)"><div class="check-box"></div><div class="check-text" style="color:rgba(235,235,245,.45);">Not applicable<small style="color:rgba(235,235,245,.3);">No social interactions today — scale above not relevant</small></div></label>
   </div>
   <div class="st" style="display:flex;align-items:center;gap:6px;font-size:15px;color:#87ceeb;">🗺️ Context</div>
   <div class="card" style="--cat:#1c6b8a;--cat-rgb:28,107,138;" style="margin-bottom:10px;">
@@ -1751,6 +1751,7 @@ function exportPDF(fromDate,toDate){
     if(['light','medium','heavy'].includes(l.bleeding)){pf('Clots',CLOTS[l.clots]);pfD('Cramping',l.cramping,'cramping');}
     psec('Sleep');pfD('Quality',l.sleepQ,'sleepQ');pf('Hours',SLEEPHRS[l.sleepHrs]);pf('Latency',SLEEPLATENCY[l.sleepLatency]);
     if(l.sleepFlags&&l.sleepFlags.includes('early-waking'))pf('Early morning waking','Yes — woke 2–4am, anxiety/racing thoughts');
+    if(l.napped)pf('Nap',l.napDur?l.napDur:'Yes');
     psec('Physical');pfD('Energy',l.energy,'energy');
     psec('Hunger and appetite');pfD('Appetite',l.appetite,'appetite');pfD('Eating behaviour',l.eatingBeh,'eatingBeh');pfD('Bloating',l.bloating,'bloating');pfD('Food noise',l.foodNoise,'foodNoise');
     psec('Bowel');pf('Movement',BOWELMOV[l.bowelMov]);
